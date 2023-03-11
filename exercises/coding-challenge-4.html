@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+        let tips = [];
+        let totals = [];
+        let sum = 0;
+
+        function caclTip(input) {
+            if (input <= 50 && input >= 300) {
+                for(let i = 0; i < input.length; i++) {
+                    tips[i] = input[i] * 0.15;
+                    totals[i] = input[i] + tips[i];
+                    sum = sum + totals[i];
+                }
+                
+            } else {
+                for(let i = 0; i < input.length; i++) {
+                    tips[i] = input[i] * 0.20;
+                    totals[i] = input[i] + tips[i];
+                    sum = sum + totals[i];
+                }
+            }
+          
+        }
+
+        caclTip(bills);
+
+
+    </script>
+</body>
+</html>

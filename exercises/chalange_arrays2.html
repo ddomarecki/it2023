@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function caclTip(input) {
+            if (input <= 50) {
+                return input * 0.15;
+            } else if (input >= 300) {
+                return input * 0.15;
+            } else {
+                return input * 0.20;
+            }
+        }
+
+        const caclTip2 = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
+
+
+        console.log(caclTip(100));
+
+        let bills = [125, 555, 44];
+
+        let tip = [];
+
+        for(i = 0; i < bills.length; i++) {
+            tip.push(caclTip2(bills[i]));
+        }
+
+        console.log(tip);
+
+        let tips = [caclTip(bills[0]), caclTip(bills[1]), caclTip(bills[2])];
+
+        let total = bills[0] + bills[1] + bills[2] + tips[0] + tips[1] + tips[2];
+    </script>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        let calcAverage = () => {
+            let avgDolphins = (42 + 23 + 71) / 3
+            let avgKoalas = (65 + 54 + 49) / 3
+
+            let avgDolphins2 = (85 + 54 + 41) / 3
+            let avgKoalas2 = (23 + 34 + 27) / 3
+
+            return [avgDolphins, avgKoalas, avgDolphins2, avgKoalas2]
+        }
+
+
+
+        let checkWinner = function (avgDolphins, avgKoalas) {
+            if (avgDolphins / avgKoalas >= 2) {  
+                console.log(`Dolphins win (${avgDolphins} vs ${avgKoalas})`);
+            } else if (avgKoalas / avgDolphins >= 2) {
+                console.log(`Koalas win (${avgKoalas} vs. ${avgDolphins})`);
+            } else {
+                console.log("Nobody wins");
+            }
+        }
+        let values = calcAverage();
+
+        checkWinner(values[0], values[1]);
+        checkWinner(values[2], values[3]);
+
+    </script>
+</body>
+
+</html>
