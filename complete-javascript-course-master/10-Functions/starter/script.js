@@ -1,5 +1,5 @@
 'use strict';
-
+//128
 // const bookings = [];
 
 // const createBooking = function (
@@ -26,30 +26,33 @@
 // createBooking('LH123', undefined, 1000);
 
 //129
-const flight = 'LH234';
-const jonas = {
-  name: 'Damian Domarecki',
-  passport: 2384399532,
-};
+// const flight = 'LH234';
+// const jonas = {
+//   name: 'Damian Domarecki',
+//   passport: 2384399532,
+// };
 
-const checkIn = function (flightNum, passenger) {
-  flightNum = 'LH999';
-  passenger.name = 'MR. ' + passenger.name;
+// const checkIn = function (flightNum, passenger) {
+//   flightNum = 'LH999';
+//   passenger.name = 'MR. ' + passenger.name;
 
-  if (passenger.passport === 2384399532) {
-    alert('Check in');
-  } else {
-    alert('wrong passport!');
-  }
-};
+//   if (passenger.passport === 2384399532) {
+//     alert('Check in');
+//   } else {
+//     alert('wrong passport!');
+//   }
+// };
 
+// // checkIn(flight, jonas);
+// // console.log(flight);
+// // console.log(jonas);
+
+// const newPassport = function (person) {
+//   person.passport = Math.trunc(Math.random() * 1000000000000);
+// };
+
+// newPassport(jonas);
 // checkIn(flight, jonas);
-// console.log(flight);
-// console.log(jonas);
 
-const newPassport = function (person) {
-  person.passport = Math.trunc(Math.random() * 1000000000000);
-};
-
-newPassport(jonas);
-checkIn(flight, jonas);
+//130
+//131 functions acceptiog callback function
