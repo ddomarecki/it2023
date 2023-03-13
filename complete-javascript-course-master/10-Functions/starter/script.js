@@ -103,3 +103,5 @@ greeterHey('Damian');
 greeterHey('Adam');
 
 greet('hello')('Damien');
+
+//The call and apply Methods start here
