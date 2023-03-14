@@ -152,3 +152,6 @@ const flightData = [583, 'George Cooper'];
 
 book.apply(swiss, flightData);
 console.log(swiss);
+
+//call method is better than apply method
+book.call(swiss, ...flightData);
