@@ -155,3 +155,19 @@ console.log(swiss);
 
 //call method is better than apply method
 book.call(swiss, ...flightData);
+
+//bind method
+
+book.bind(eurowings);
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(23, 'Steven Williams');
+
+//preset name in bind method
+const bookEW23 = book.bind(eurowings, 23);
+
+bookEW23('Damianno Italianno');
+bookEW23('Martha Cooper');
