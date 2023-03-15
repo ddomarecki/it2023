@@ -218,6 +218,7 @@
 // console.log(addVAT2(200));
 
 // Codding Challenge #1
+let listing = 'Poll results are: ';
 
 const poll = {
   question: 'What is your favourite programming language?',
@@ -236,6 +237,24 @@ const poll = {
     answearInput >= 0 && answearInput <= 3
       ? (this.answers[Number(answearInput)] += 1)
       : alert('chose between 0 and 3');
+  },
+  displayResults(type) {
+    if (typeof type === 'string') {
+      for (const item of poll.answers.entries()) {
+        if (item[0] == poll.answers.length - 1) {
+          listing = listing + item[1] + '.';
+        } else {
+          listing = listing + item[1] + ', ';
+        }
+      }
+      console.log(listing);
+
+      // console.log(
+      //   `Poll results are: ${this.answers[0]}, ${this.answers[1]}, ${this.answers[2]}, ${this.answers[3]}`
+      // );
+    } else if (typeof type === 'object') {
+      console.log(this.answers);
+    }
   },
 };
 
