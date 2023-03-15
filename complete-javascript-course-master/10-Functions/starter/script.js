@@ -106,113 +106,135 @@
 
 //The call and apply Methods start here
 
-const lufthansa = {
-  airline: 'Lufthansa',
-  iataCode: 'LH',
-  bookings: [],
-  // book: function() {}
-  book(flightNum, name) {
-    console.log(
-      `${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`
-    );
-    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
-  },
-};
+// const lufthansa = {
+//   airline: 'Lufthansa',
+//   iataCode: 'LH',
+//   bookings: [],
+//   // book: function() {}
+//   book(flightNum, name) {
+//     console.log(
+//       `${name} booked a seat on ${this.airline} flight ${this.iataCode} ${flightNum}`
+//     );
+//     this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+//   },
+// };
 
-lufthansa.book(230, 'Damian Domarecki');
-lufthansa.book(635, 'John Smith');
+// lufthansa.book(230, 'Damian Domarecki');
+// lufthansa.book(635, 'John Smith');
 
-const eurowings = {
-  airline: 'Eurowings',
-  iataCode: 'EW',
-  bookings: [],
-};
+// const eurowings = {
+//   airline: 'Eurowings',
+//   iataCode: 'EW',
+//   bookings: [],
+// };
 
-const book = lufthansa.book;
+// const book = lufthansa.book;
 
-// book(23, "Sarah Williams")
+// // book(23, "Sarah Williams")
 
-//call method
-book.call(eurowings, 23, 'Satah Williams');
-console.log(eurowings);
+// //call method
+// book.call(eurowings, 23, 'Satah Williams');
+// console.log(eurowings);
 
-book.call(lufthansa, 239, 'Mary Cooper');
-console.log(lufthansa);
+// book.call(lufthansa, 239, 'Mary Cooper');
+// console.log(lufthansa);
 
-const swiss = {
-  airline: 'Swiss Air Lines',
-  iataCode: 'LX',
-  bookings: [],
-};
+// const swiss = {
+//   airline: 'Swiss Air Lines',
+//   iataCode: 'LX',
+//   bookings: [],
+// };
 
-book.call(swiss, 573, 'Mary Cooper');
+// book.call(swiss, 573, 'Mary Cooper');
 
-//Apply method
-const flightData = [583, 'George Cooper'];
+// //Apply method
+// const flightData = [583, 'George Cooper'];
 
-book.apply(swiss, flightData);
-console.log(swiss);
+// book.apply(swiss, flightData);
+// console.log(swiss);
 
-//call method is better than apply method
-book.call(swiss, ...flightData);
+// //call method is better than apply method
+// book.call(swiss, ...flightData);
 
-//bind method
+// //bind method
 
-book.bind(eurowings);
+// book.bind(eurowings);
 
-const bookEW = book.bind(eurowings);
-const bookLH = book.bind(lufthansa);
-const bookLX = book.bind(swiss);
+// const bookEW = book.bind(eurowings);
+// const bookLH = book.bind(lufthansa);
+// const bookLX = book.bind(swiss);
 
-bookEW(23, 'Steven Williams');
+// bookEW(23, 'Steven Williams');
 
-//preset name in bind method
-const bookEW23 = book.bind(eurowings, 23);
+// //preset name in bind method
+// const bookEW23 = book.bind(eurowings, 23);
 
-bookEW23('Damianno Italianno');
-bookEW23('Martha Cooper');
+// bookEW23('Damianno Italianno');
+// bookEW23('Martha Cooper');
 
-//With Event Listeners
-lufthansa.planes = 300;
-lufthansa.buyPlane = function () {
-  console.log(this);
+// //With Event Listeners
+// lufthansa.planes = 300;
+// lufthansa.buyPlane = function () {
+//   console.log(this);
 
-  this.planes++;
-  console.log(this.planes);
-};
+//   this.planes++;
+//   console.log(this.planes);
+// };
 
-document
-  .querySelector('.buy')
-  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+// document
+//   .querySelector('.buy')
+//   .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
 
-// Partial application
+// // Partial application
 
-const addTax = (rate, value) => value + value * rate;
-console.log(addTax(0.1, 200));
+// const addTax = (rate, value) => value + value * rate;
+// console.log(addTax(0.1, 200));
 
-const addVAT = addTax.bind(null, 0.23);
+// const addVAT = addTax.bind(null, 0.23);
 
-console.log(addVAT(100));
+// console.log(addVAT(100));
 
-// challange
-const tax = function (rate) {
-  return function (value) {
-    console.log(value + value * rate);
-  };
-};
-
-tax(0.5)(100);
-// const greet = function (greeting) {
-//   return function (name) {
-//     console.log(`${greeting} ${name}`);
+// // challange
+// const tax = function (rate) {
+//   return function (value) {
+//     console.log(value + value * rate);
 //   };
 // };
 
-const addTaxRate = function (rate) {
-  return function (value) {
-    return value + value * rate;
-  };
-};
+// tax(0.5)(100);
+// // const greet = function (greeting) {
+// //   return function (name) {
+// //     console.log(`${greeting} ${name}`);
+// //   };
+// // };
 
-const addVAT2 = addTaxRate(0.23);
-console.log(addVAT2(200));
+// const addTaxRate = function (rate) {
+//   return function (value) {
+//     return value + value * rate;
+//   };
+// };
+
+// const addVAT2 = addTaxRate(0.23);
+// console.log(addVAT2(200));
+
+// Codding Challenge #1
+
+const poll = {
+  question: 'What is your favourite programming language?',
+  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+  // This generates [0, 0, 0, 0]. More in the next section!
+  answers: new Array(4).fill(0),
+  registerNewAnswer() {
+    let answearInput = prompt(
+      `What is your favourite programming language? \n
+    0: JavaScript \n
+    1: Python \n
+    2: Rust \n
+    3: C++ \n
+    (Write option number)`
+    );
+    answearInput >= 0 && answearInput <= 3
+      ? (this.answers[Number(answearInput)] += 1)
+      : alert('chose between 0 and 3');
+  },
+};
