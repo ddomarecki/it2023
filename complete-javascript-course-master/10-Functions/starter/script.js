@@ -238,3 +238,7 @@ const poll = {
       : alert('chose between 0 and 3');
   },
 };
+
+document.querySelector('.poll').addEventListener('click', function () {
+  poll.registerNewAnswer.call(poll);
+});
