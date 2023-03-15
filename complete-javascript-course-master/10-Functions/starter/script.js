@@ -237,22 +237,29 @@ const poll = {
       ? (this.answers[Number(answearInput)] += 1)
       : alert('chose between 0 and 3');
   },
-  displayResults(type) {
-    let listing = 'Poll results are: ';
-    if (typeof type === 'string') {
-      for (const item of poll.answers.entries()) {
-        if (item[0] == poll.answers.length - 1) {
-          listing = listing + item[1] + '';
-        } else {
-          listing = listing + item[1] + ', ';
-        }
-      }
-      console.log(listing);
+  // displayResults(type = 'array') {
+  //   let listing = 'Poll results are: ';
+  //   if (typeof type === 'string') {
+  //     for (const item of poll.answers.entries()) {
+  //       if (item[0] == poll.answers.length - 1) {
+  //         listing = listing + item[1] + '';
+  //       } else {
+  //         listing = listing + item[1] + ', ';
+  //       }
+  //     }
+  //     console.log(listing);
 
-      // console.log(
-      //   `Poll results are: ${this.answers[0]}, ${this.answers[1]}, ${this.answers[2]}, ${this.answers[3]}`
-      // );
-    } else if (typeof type === 'object') {
+  //     // console.log(
+  //     //   `Poll results are: ${this.answers[0]}, ${this.answers[1]}, ${this.answers[2]}, ${this.answers[3]}`
+  //     // );
+  //   } else if (typeof type === 'object') {
+  //     console.log(this.answers);
+  //   }
+  // },
+  displayResults(type = 'array') {
+    if (type === 'string') {
+      console.log(`Wyniki ankiety to: ${this.answers.join(', ')}`);
+    } else {
       console.log(this.answers);
     }
   },
@@ -262,3 +269,11 @@ document.querySelector('.poll').addEventListener('click', function () {
   poll.registerNewAnswer.call(poll);
   poll.displayResults.call(poll, 'call');
 });
+
+const data1 = [5, 2, 3];
+const data2 = [1, 5, 3, 9, 6, 1];
+
+poll.displayResults.call({ answers: data1 }); // Wyświetl jako tablica
+poll.displayResults.call({ answers: data1 }, 'string'); // Wyświetl jako ciąg znaków
+poll.displayResults.call({ answers: data2 }); // Wyświetl jako tablica
+poll.displayResults.call({ answers: data2 }, 'string'); // Wyświetl jako ciąg znaków
