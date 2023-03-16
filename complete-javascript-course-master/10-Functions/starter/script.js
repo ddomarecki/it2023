@@ -224,18 +224,33 @@ const poll = {
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section!
   answers: new Array(4).fill(0),
+  // registerNewAnswer() {
+  //   let answearInput = prompt(
+  //     `What is your favourite programming language? \n
+  //   0: JavaScript \n
+  //   1: Python \n
+  //   2: Rust \n
+  //   3: C++ \n
+  //   (Write option number)`
+  //   );
+  //   answearInput >= 0 && answearInput <= 3
+  //     ? (this.answers[Number(answearInput)] += 1)
+  //     : alert('chose between 0 and 3');
+  // },
+
+  //Get answer
   registerNewAnswer() {
-    let answearInput = prompt(
-      `What is your favourite programming language? \n
-    0: JavaScript \n
-    1: Python \n
-    2: Rust \n
-    3: C++ \n
-    (Write option number)`
+    const answer = Number(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+      )
     );
-    answearInput >= 0 && answearInput <= 3
-      ? (this.answers[Number(answearInput)] += 1)
-      : alert('chose between 0 and 3');
+    console.log(answer);
+
+    typeof answer === 'number' &&
+      answer < this.answers.length &&
+      this.answers[answer]++;
+    this.displayResults('string');
   },
   // displayResults(type = 'array') {
   //   let listing = 'Poll results are: ';
