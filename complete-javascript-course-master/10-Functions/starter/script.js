@@ -219,76 +219,84 @@
 
 // Codding Challenge #1
 
-const poll = {
-  question: 'What is your favourite programming language?',
-  options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
-  // This generates [0, 0, 0, 0]. More in the next section!
-  answers: new Array(4).fill(0),
-  // registerNewAnswer() {
-  //   let answearInput = prompt(
-  //     `What is your favourite programming language? \n
-  //   0: JavaScript \n
-  //   1: Python \n
-  //   2: Rust \n
-  //   3: C++ \n
-  //   (Write option number)`
-  //   );
-  //   answearInput >= 0 && answearInput <= 3
-  //     ? (this.answers[Number(answearInput)] += 1)
-  //     : alert('chose between 0 and 3');
-  // },
+// const poll = {
+//   question: 'What is your favourite programming language?',
+//   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
+//   // This generates [0, 0, 0, 0]. More in the next section!
+//   answers: new Array(4).fill(0),
+// registerNewAnswer() {
+//   let answearInput = prompt(
+//     `What is your favourite programming language? \n
+//   0: JavaScript \n
+//   1: Python \n
+//   2: Rust \n
+//   3: C++ \n
+//   (Write option number)`
+//   );
+//   answearInput >= 0 && answearInput <= 3
+//     ? (this.answers[Number(answearInput)] += 1)
+//     : alert('chose between 0 and 3');
+// },
 
-  //Get answer
-  registerNewAnswer() {
-    const answer = Number(
-      prompt(
-        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
-      )
-    );
-    console.log(answer);
+//Get answer
+// registerNewAnswer() {
+//   const answer = Number(
+//     prompt(
+//       `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+//     )
+//   );
+//   console.log(answer);
 
-    typeof answer === 'number' &&
-      answer < this.answers.length &&
-      this.answers[answer]++;
-    this.displayResults('string');
-  },
-  // displayResults(type = 'array') {
-  //   let listing = 'Poll results are: ';
-  //   if (typeof type === 'string') {
-  //     for (const item of poll.answers.entries()) {
-  //       if (item[0] == poll.answers.length - 1) {
-  //         listing = listing + item[1] + '';
-  //       } else {
-  //         listing = listing + item[1] + ', ';
-  //       }
-  //     }
-  //     console.log(listing);
+//   typeof answer === 'number' &&
+//     answer < this.answers.length &&
+//     this.answers[answer]++;
+//   this.displayResults('string');
+// },
+// displayResults(type = 'array') {
+//   let listing = 'Poll results are: ';
+//   if (typeof type === 'string') {
+//     for (const item of poll.answers.entries()) {
+//       if (item[0] == poll.answers.length - 1) {
+//         listing = listing + item[1] + '';
+//       } else {
+//         listing = listing + item[1] + ', ';
+//       }
+//     }
+//     console.log(listing);
 
-  //     // console.log(
-  //     //   `Poll results are: ${this.answers[0]}, ${this.answers[1]}, ${this.answers[2]}, ${this.answers[3]}`
-  //     // );
-  //   } else if (typeof type === 'object') {
-  //     console.log(this.answers);
-  //   }
-  // },
-  displayResults(type = 'array') {
-    if (type === 'string') {
-      console.log(`Wyniki ankiety to: ${this.answers.join(', ')}`);
-    } else {
-      console.log(this.answers);
-    }
-  },
-};
+//     // console.log(
+//     //   `Poll results are: ${this.answers[0]}, ${this.answers[1]}, ${this.answers[2]}, ${this.answers[3]}`
+//     // );
+//   } else if (typeof type === 'object') {
+//     console.log(this.answers);
+//   }
+// },
+//   displayResults(type = 'array') {
+//     if (type === 'string') {
+//       console.log(`Wyniki ankiety to: ${this.answers.join(', ')}`);
+//     } else {
+//       console.log(this.answers);
+//     }
+//   },
+// };
 
-document.querySelector('.poll').addEventListener('click', function () {
-  poll.registerNewAnswer.call(poll);
-  poll.displayResults.call(poll, 'call');
-});
+// document.querySelector('.poll').addEventListener('click', function () {
+//   poll.registerNewAnswer.call(poll);
+//   poll.displayResults.call(poll, 'call');
+// });
 
-const data1 = [5, 2, 3];
-const data2 = [1, 5, 3, 9, 6, 1];
+// const data1 = [5, 2, 3];
+// const data2 = [1, 5, 3, 9, 6, 1];
 
-poll.displayResults.call({ answers: data1 }); // Wyświetl jako tablica
-poll.displayResults.call({ answers: data1 }, 'string'); // Wyświetl jako ciąg znaków
-poll.displayResults.call({ answers: data2 }); // Wyświetl jako tablica
-poll.displayResults.call({ answers: data2 }, 'string'); // Wyświetl jako ciąg znaków
+// poll.displayResults.call({ answers: data1 }); // Wyświetl jako tablica
+// poll.displayResults.call({ answers: data1 }, 'string'); // Wyświetl jako ciąg znaków
+// poll.displayResults.call({ answers: data2 }); // Wyświetl jako tablica
+// poll.displayResults.call({ answers: data2 }, 'string'); // Wyświetl jako ciąg znaków
+
+//Immediately Invoked Function Expressios
+
+(function () {
+  console.log('this will never run again');
+})();
+
+(() => console.log('This will also never run again'))();
