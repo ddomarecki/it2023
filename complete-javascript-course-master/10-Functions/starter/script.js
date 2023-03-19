@@ -344,18 +344,33 @@
 // h();
 // f();
 
-// Example 2
+// // Example 2
 
-const boardPassengers = function (n, wait) {
-  const perGroup = n / 3;
+// const boardPassengers = function (n, wait) {
+//   const perGroup = n / 3;
 
-  setTimeout(function () {
-    console.log(`We are now boarding all ${n} passengers`);
-    console.log(`There are 3 groups, each with ${perGroup}`);
-  }, wait * 1000);
+//   setTimeout(function () {
+//     console.log(`We are now boarding all ${n} passengers`);
+//     console.log(`There are 3 groups, each with ${perGroup}`);
+//   }, wait * 1000);
 
-  console.log(`Will start boarding in ${wait} seconds`);
-};
+//   console.log(`Will start boarding in ${wait} seconds`);
+// };
 
-const perGroup = 1000;
-boardPassengers(180, 3);
+// const perGroup = 1000;
+// boardPassengers(180, 3);
+
+// Coding Challenge #2
+
+// (function () {
+//   const header = document.querySelector('h1');
+//   header.style.color = 'red';
+// })();
+
+(function () {
+  const header = document.querySelector('h1');
+  header.style.color = 'red';
+  document.querySelector('body').addEventListener('click', function () {
+    header.style.color = 'blue';
+  });
+})();
