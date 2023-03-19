@@ -78,3 +78,31 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // Section 11: Working With Arrays
 
 // 142. Simple Array Methods
+
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE
+arr.slice(2);
+arr.slice(2, 4);
+arr.slice(-2);
+arr.slice(-1);
+arr.slice(1, -2);
+arr.slice();
+
+// SPLICE
+arr.splice(2);
+arr.splice(-1);
+arr.splice(1, 2);
+arr.splice(1, 0, 'b', 'c');
+
+// REVERSE
+const arr2 = ['j', 'i', 'h', 'g', 'f'];
+arr2.reverse();
+
+// CONCAT
+const letters = arr.concat(arr2);
+console.log(letters);
+console.log([...arr, ...arr2]);
+
+// JOIN
+console.log(letters.join(' - '));
