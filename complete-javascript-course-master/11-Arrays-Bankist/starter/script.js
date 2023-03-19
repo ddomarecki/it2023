@@ -74,3 +74,7 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+// Section 11: Working With Arrays
+
+// 142. Simple Array Methods
