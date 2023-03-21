@@ -133,25 +133,27 @@ const inputClosePin = document.querySelector('.form__input--pin');
 //   }
 // });
 
-// 145. forEach With Maps and Sets
+// // 145. forEach With Maps and Sets
 
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-// Map
-const currencies = new Map([
-  ['USD', 'United States dollar'],
-  ['EUR', 'Euro'],
-  ['GBP', 'Pound sterling'],
-]);
+// // Map
+// const currencies = new Map([
+//   ['USD', 'United States dollar'],
+//   ['EUR', 'Euro'],
+//   ['GBP', 'Pound sterling'],
+// ]);
 
-currencies.forEach(function (value, key, map) {
-  console.log(`${key}: ${value}`);
-});
+// currencies.forEach(function (value, key, map) {
+//   console.log(`${key}: ${value}`);
+// });
 
-// Set
+// // Set
 
-const currenciesUnique = new Set(['USD', 'GBP, "USD', 'EUR', 'EUR']);
+// const currenciesUnique = new Set(['USD', 'GBP, "USD', 'EUR', 'EUR']);
 
-currenciesUnique.forEach(function (value, key, set) {
-  console.log(`${key}: ${value}`);
-});
+// currenciesUnique.forEach(function (value, key, set) {
+//   console.log(`${key}: ${value}`);
+// });
+
+// 146. PROJECT: "Bankist" App (introduction)
