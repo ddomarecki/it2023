@@ -203,25 +203,39 @@ displayMovements(account1.movements);
 
 // // 149. Data Transformations: map, filter, reduce
 
-// 150. The map Method
-const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+// // 150. The map Method
+// const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
-const eurToUsd = 1.1;
+// const eurToUsd = 1.1;
 
-const movementsUSD = movements.map(function (mov) {
-  return mov * eurToUsd;
-});
-console.log(movementsUSD);
+// const movementsUSD = movements.map(function (mov) {
+//   return mov * eurToUsd;
+// });
+// console.log(movementsUSD);
 
-const movementsUSDfor = [];
-for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+// const movementsUSDfor = [];
+// for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
 
-const movementsUSDArrow = movements.map(mov => mov * eurToUsd);
+// const movementsUSDArrow = movements.map(mov => mov * eurToUsd);
 
-const movementsDescriptions = movements.map(
-  (mov, index, arr) =>
-    `Movement ${index + 1} your ${
-      mov > 0 ? 'deposited' : 'withdrew'
-    } ${Math.abs(mov)}`
-);
-console.log(movementsDescriptions);
+// const movementsDescriptions = movements.map(
+//   (mov, index, arr) =>
+//     `Movement ${index + 1} your ${
+//       mov > 0 ? 'deposited' : 'withdrew'
+//     } ${Math.abs(mov)}`
+// );
+// console.log(movementsDescriptions);
+
+// Own Exercises
+// const account5 = {
+//   owner: 'Sarah Smith',
+//   movements: [430, 1000, 700, 50, 90],
+//   interestRate: 1,
+//   pin: 4444,
+// };
+
+// for (const [day, data2] of Object.entries(account5)) {
+//   console.log(day, data2);
+// }
+
+// console.log(account5.movements.join('-'));
