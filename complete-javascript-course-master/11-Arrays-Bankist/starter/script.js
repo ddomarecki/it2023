@@ -177,3 +177,25 @@ displayMovements(account1.movements);
 // });
 
 // 146. PROJECT: "Bankist" App (introduction)
+
+// 148. Coding Challenge #1
+//Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
+//Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
+
+const checkDogs = function (dogsJulia, dogsKate) {
+  let copyDogsJulia = dogsJulia.slice(0);
+  copyDogsJulia.shift();
+  copyDogsJulia.splice(-2, 2);
+  let connectedArrays = copyDogsJulia.concat(dogsKate);
+  connectedArrays.forEach(function (dogAge, index) {
+    if (dogAge > 3) {
+      console.log(
+        `Dog number ${index} is an adult, and is ${dogAge} years old 🐕`
+      );
+    } else {
+      console.log(`Dog number ${index} is still a puppy 🐕`);
+    }
+  });
+};
+
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
