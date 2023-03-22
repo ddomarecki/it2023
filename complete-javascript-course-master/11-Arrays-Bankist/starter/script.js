@@ -93,6 +93,19 @@ const createUsernames = function (accs) {
 createUsernames(accounts);
 console.log(accounts);
 
+//same as above but using for of method:
+// const createUsernames2 = function (accs) {
+//   for (let acc of accs) {
+//     acc.username = acc.owner
+//       .toLowerCase()
+//       .split(' ')
+//       .map(name => name[0])
+//       .join('');
+//   }
+// };
+// createUsernames2(accounts);
+// console.log(accounts);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
