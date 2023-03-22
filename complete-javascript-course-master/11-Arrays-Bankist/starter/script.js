@@ -188,7 +188,7 @@ const checkDogs = function (dogsJulia, dogsKate) {
   copyDogsJulia.splice(-2, 2);
   let connectedArrays = copyDogsJulia.concat(dogsKate);
   connectedArrays.forEach(function (dogAge, index) {
-    if (dogAge > 3) {
+    if (dogAge >= 3) {
       console.log(
         `Dog number ${index} is an adult, and is ${dogAge} years old 🐕`
       );
