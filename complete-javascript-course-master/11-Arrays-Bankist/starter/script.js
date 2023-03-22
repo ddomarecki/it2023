@@ -182,21 +182,46 @@ displayMovements(account1.movements);
 //Data 1: Julia's data [3, 5, 2, 12, 7], Kate's data [4, 1, 15, 8, 3]
 //Data 2: Julia's data [9, 16, 6, 8, 3], Kate's data [10, 5, 6, 1, 4]
 
-const checkDogs = function (dogsJulia, dogsKate) {
-  let copyDogsJulia = dogsJulia.slice(0);
-  copyDogsJulia.shift();
-  copyDogsJulia.splice(-2, 2);
-  let connectedArrays = copyDogsJulia.concat(dogsKate);
-  connectedArrays.forEach(function (dogAge, index) {
-    if (dogAge >= 3) {
-      console.log(
-        `Dog number ${index} is an adult, and is ${dogAge} years old 🐕`
-      );
-    } else {
-      console.log(`Dog number ${index} is still a puppy 🐕`);
-    }
-  });
-};
+// const checkDogs = function (dogsJulia, dogsKate) {
+//   let copyDogsJulia = dogsJulia.slice(0);
+//   copyDogsJulia.shift();
+//   copyDogsJulia.splice(-2, 2);
+//   let connectedArrays = copyDogsJulia.concat(dogsKate);
+//   connectedArrays.forEach(function (dogAge, index) {
+//     if (dogAge >= 3) {
+//       console.log(
+//         `Dog number ${index} is an adult, and is ${dogAge} years old 🐕`
+//       );
+//     } else {
+//       console.log(`Dog number ${index} is still a puppy 🐕`);
+//     }
+//   });
+// };
 
-checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
-checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+// checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+// checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
+// // 149. Data Transformations: map, filter, reduce
+
+// 150. The map Method
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+
+const eurToUsd = 1.1;
+
+const movementsUSD = movements.map(function (mov) {
+  return mov * eurToUsd;
+});
+console.log(movementsUSD);
+
+const movementsUSDfor = [];
+for (const mov of movements) movementsUSDfor.push(mov * eurToUsd);
+
+const movementsUSDArrow = movements.map(mov => mov * eurToUsd);
+
+const movementsDescriptions = movements.map(
+  (mov, index, arr) =>
+    `Movement ${index + 1} your ${
+      mov > 0 ? 'deposited' : 'withdrew'
+    } ${Math.abs(mov)}`
+);
+console.log(movementsDescriptions);
