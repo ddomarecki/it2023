@@ -80,6 +80,13 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
+
 const createUsernames = function (accs) {
   accs.forEach(function (acc) {
     acc.username = acc.owner
@@ -265,15 +272,33 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // console.log(account5.movements.join('-'));
 
-// 152. The filter Method
+// // 152. The filter Method
 
-const deposits = movements.filter(function (mov, i, arr) {
-  return mov > 0;
-});
+// const deposits = movements.filter(function (mov, i, arr) {
+//   return mov > 0;
+// });
 
-const depositsFor = [];
-for (const mov of movements) if (mov > 0) depositsFor.push(mov);
+// const depositsFor = [];
+// for (const mov of movements) if (mov > 0) depositsFor.push(mov);
 
-const withdrawals = movements.filter(function (mov) {
-  return mov < 0;
-});
+// const withdrawals = movements.filter(function (mov) {
+//   return mov < 0;
+// });
+
+//153. Reduce Method
+
+const balance = movements.reduce(function (acc, cur, i, arr) {
+  console.log(`Iteration ${i}: ${acc}`);
+  return acc + cur;
+}, 0);
+
+const balance3 = movements.reduce((acc, cur) => acc + cur, 0);
+
+let balance2 = 0;
+for (const mov of movements) balance2 += mov;
+
+// Maximum value
+const max = movements.reduce((acc, mov) => {
+  if (acc > mov) return acc;
+  else return mov;
+}, movements[0]);
