@@ -285,20 +285,57 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 //   return mov < 0;
 // });
 
-//153. Reduce Method
+// //153. Reduce Method
 
-const balance = movements.reduce(function (acc, cur, i, arr) {
-  console.log(`Iteration ${i}: ${acc}`);
-  return acc + cur;
-}, 0);
+// const balance = movements.reduce(function (acc, cur, i, arr) {
+//   console.log(`Iteration ${i}: ${acc}`);
+//   return acc + cur;
+// }, 0);
 
-const balance3 = movements.reduce((acc, cur) => acc + cur, 0);
+// const balance3 = movements.reduce((acc, cur) => acc + cur, 0);
 
-let balance2 = 0;
-for (const mov of movements) balance2 += mov;
+// let balance2 = 0;
+// for (const mov of movements) balance2 += mov;
 
-// Maximum value
-const max = movements.reduce((acc, mov) => {
-  if (acc > mov) return acc;
-  else return mov;
-}, movements[0]);
+// // Maximum value
+// const max = movements.reduce((acc, mov) => {
+//   if (acc > mov) return acc;
+//   else return mov;
+// }, movements[0]);
+
+// Coding Challenge #2
+// use Map, Filter and Reduce methods
+
+// Test data:
+let testData1 = [5, 2, 4, 1, 15, 8, 3];
+let testData2 = [16, 6, 10, 5, 6, 1, 4];
+
+function calcAverageHumanAge(ages) {
+  let dogAgeInHuman = ages.map(function (age, index) {
+    if (age <= 2) {
+      return age * 2;
+    } else {
+      return age * 4 + 16;
+    }
+  });
+  console.log(dogAgeInHuman);
+  let dogOlderThan18yo = dogAgeInHuman.filter(function (age, index) {
+    return age > 18;
+  });
+
+  console.log(
+    `Dogs older than 18yo in human years: ${dogOlderThan18yo.join(', ')}`
+  );
+  let averageHumanAgeOfDogs = dogAgeInHuman.reduce(
+    (acc, current) => acc + current
+  );
+  console.log(
+    `Average Human Age Of Dogs: ${Math.round(
+      averageHumanAgeOfDogs / dogAgeInHuman.length
+    )}`
+  );
+}
+
+calcAverageHumanAge(testData1);
+console.log('---------------test Data 2---------------');
+calcAverageHumanAge(testData2);
