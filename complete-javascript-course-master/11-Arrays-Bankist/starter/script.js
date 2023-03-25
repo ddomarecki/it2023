@@ -156,6 +156,7 @@ btnLogin.addEventListener('click', function (e) {
     acc => acc.username === inputLoginUsername.value
   );
   console.log(currentAccount);
+
   if (currentAccount && currentAccount.pin === Number(inputLoginPin.value)) {
     // Display UI and welcome message
     labelWelcome.textContent = `Welcome back, ${
@@ -194,6 +195,27 @@ btnTransfer.addEventListener('click', function (e) {
     // Update UI
     updateUI(currentAccount);
   }
+});
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index);
+
+    // Delete account
+    accounts.splice(index, 1);
+
+    //Hide UI
+    containerApp.style.opacity = 0;
+  }
+  inputCloseUsername.value = inputClosePin.value = '';
 });
 
 /////////////////////////////////////////////////
@@ -490,3 +512,5 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 // 158. Implementing Login
 
 // 159. Implementing Transfers
+
+// 160. The findIndex Method
