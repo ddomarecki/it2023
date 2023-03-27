@@ -616,27 +616,29 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // 163. More Ways of Creating and Filling Arrays.
 
-const arr = [1, 2, 3, 4, 5, 6, 7];
+// const arr = [1, 2, 3, 4, 5, 6, 7];
 
-//Empty arrays + fill method\
-console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+// //Empty arrays + fill method\
+// console.log(new Array(1, 2, 3, 4, 5, 6, 7));
 
-const x = new Array(7);
-x.fill(1, 3, 5);
-arr.fill(23, 4, 6);
+// const x = new Array(7);
+// x.fill(1, 3, 5);
+// arr.fill(23, 4, 6);
 
-// Array.from
-const y = Array.from({ length: 7 }, () => 1);
+// // Array.from
+// const y = Array.from({ length: 7 }, () => 1);
 
-const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+// const z = Array.from({ length: 7 }, (cur, i) => i + 1);
 
-labelBalance.addEventListener('click', function () {
-  console.log(x);
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value'),
-    el => Number(el.textContent.replace('€', ''))
-  );
-  console.log(movementsUI);
+// labelBalance.addEventListener('click', function () {
+//   console.log(x);
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value'),
+//     el => Number(el.textContent.replace('€', ''))
+//   );
+//   console.log(movementsUI);
 
-  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
-});
+//   const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+// });
+
+//164.
