@@ -586,30 +586,57 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // 163. Sorting Arrays
 
-// Strings
-const owners = ['Damian', 'Zach', 'Adam', 'Martha'];
-console.log(owners.sort());
+// // Strings
+// const owners = ['Damian', 'Zach', 'Adam', 'Martha'];
+// console.log(owners.sort());
 
-// NUmbers
+// // NUmbers
 
-console.log(movements);
+// console.log(movements);
 
-// return < 0; A, B
-// return > 0; B, A
+// // return < 0; A, B
+// // return > 0; B, A
 
-// Ascending
-// movements.sort((a, b) => {
-//   if (a > b) return 1;
-//   if (b > a) return -1;
-// });
+// // Ascending
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (b > a) return -1;
+// // });
 
-movements.sort((a, b) => a - b);
+// movements.sort((a, b) => a - b);
 
-// Descendind
-// movements.sort((a, b) => {
-//   if (a > b) return 1;
-//   if (b > a) return -1;
-// });
-movements.sort((a, b) => b - a);
+// // Descendind
+// // movements.sort((a, b) => {
+// //   if (a > b) return 1;
+// //   if (b > a) return -1;
+// // });
+// movements.sort((a, b) => b - a);
 
-console.log(movements);
+// console.log(movements);
+
+// 163. More Ways of Creating and Filling Arrays.
+
+const arr = [1, 2, 3, 4, 5, 6, 7];
+
+//Empty arrays + fill method\
+console.log(new Array(1, 2, 3, 4, 5, 6, 7));
+
+const x = new Array(7);
+x.fill(1, 3, 5);
+arr.fill(23, 4, 6);
+
+// Array.from
+const y = Array.from({ length: 7 }, () => 1);
+
+const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+
+labelBalance.addEventListener('click', function () {
+  console.log(x);
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI);
+
+  const movementsUI2 = [...document.querySelectorAll('.movements__value')];
+});
