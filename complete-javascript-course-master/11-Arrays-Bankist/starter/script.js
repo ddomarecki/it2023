@@ -643,22 +643,24 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 //164. More Ways of Creating and Filling Arrays
 
-const x = new Array(7);
-x.fill(1);
-x.fill(1, 3);
-x.fill(1, 3, 5);
+// const x = new Array(7);
+// x.fill(1);
+// x.fill(1, 3);
+// x.fill(1, 3, 5);
 
-// Array from
+// // Array from
 
-const y = Array.from({ length: 7 }, () => 1);
-const z = Array.from({ length: 7 }, (cur, i) => i + 1);
+// const y = Array.from({ length: 7 }, () => 1);
+// const z = Array.from({ length: 7 }, (cur, i) => i + 1);
 
-// converting nodelist to the array Array.from(nodelist)
+// // converting nodelist to the array Array.from(nodelist)
 
-labelBalance.addEventListener('click', function () {
-  const movementsUI = Array.from(
-    document.querySelectorAll('.movements__value'),
-    el => Number(el.textContent.replace('€', ''))
-  );
-  console.log(movementsUI);
-});
+// labelBalance.addEventListener('click', function () {
+//   const movementsUI = Array.from(
+//     document.querySelectorAll('.movements__value'),
+//     el => Number(el.textContent.replace('€', ''))
+//   );
+//   console.log(movementsUI);
+// });
+
+// 165. Summary: Which Array Method to Use?
