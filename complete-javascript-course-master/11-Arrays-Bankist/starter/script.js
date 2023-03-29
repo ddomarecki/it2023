@@ -667,48 +667,111 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // 166. Array Methods Practice.
 
-// 1.
-// const bankDepositSum = accounts.map(acc => acc.movements).flat();
-const bankDepositSum = accounts
-  .flatMap(acc => acc.movements)
-  .filter(mov => mov > 0)
-  .reduce((sum, cur) => sum + cur, 0);
+// // 1.
+// // const bankDepositSum = accounts.map(acc => acc.movements).flat();
+// const bankDepositSum = accounts
+//   .flatMap(acc => acc.movements)
+//   .filter(mov => mov > 0)
+//   .reduce((sum, cur) => sum + cur, 0);
 
-console.log(bankDepositSum);
+// console.log(bankDepositSum);
 
-// 2.
-// const numDepisits1000 = accounts.flatMap(acc=>acc.movements).filter(mov => mov >= 1000).length
+// // 2.
+// // const numDepisits1000 = accounts.flatMap(acc=>acc.movements).filter(mov => mov >= 1000).length
 
-const numDepisits1000 = accounts
-  .flatMap(acc => acc.movements)
-  .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
+// const numDepisits1000 = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce((count, cur) => (cur >= 1000 ? count + 1 : count), 0);
 
-// 3.
-const { depisits, withdrawals } = accounts
-  .flatMap(acc => acc.movements)
-  .reduce(
-    (sums, cur) => {
-      // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
-      sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
-      return sums;
-    },
-    { deposits: 0, withdrawals: 0 }
-  );
+// // 3.
+// const { depisits, withdrawals } = accounts
+//   .flatMap(acc => acc.movements)
+//   .reduce(
+//     (sums, cur) => {
+//       // cur > 0 ? (sums.deposits += cur) : (sums.withdrawals += cur);
+//       sums[cur > 0 ? 'deposits' : 'withdrawals'] += cur;
+//       return sums;
+//     },
+//     { deposits: 0, withdrawals: 0 }
+//   );
 
-// 4.
+// // 4.
 // this is a nice title -> This Is a Nice Title
-const convertTitleCase = function (title) {
-  const capitalize = str => str[0].toUpperCase() + str.slice(1);
-  const exceptions = ['a', 'an', 'the', 'and', 'but', 'or', 'on', 'in', 'with'];
-  const titleCase = title
-    .toLowerCase()
-    .split(' ')
-    .map(word => (exceptions.includes(word) ? word : capitalize(word)))
-    .join(' ');
-  return capitalize(titleCase);
-};
-console.log(
-  convertTitleCase(
-    'a - this is a nice title but NOT so long, title with an EXAMPLE'
+// const convertTitleCase = function (title) {
+//   const capitalize = str => str[0].toUpperCase() + str.slice(1);
+//   const exceptions = ['a', 'an', 'the', 'and', 'but', 'or', 'on', 'in', 'with'];
+//   const titleCase = title
+//     .toLowerCase()
+//     .split(' ')
+//     .map(word => (exceptions.includes(word) ? word : capitalize(word)))
+//     .join(' ');
+//   return capitalize(titleCase);
+// };
+// console.log(
+//   convertTitleCase(
+//     'a - this is a nice title but NOT so long, title with an EXAMPLE'
+//   )
+// );
+
+// 167. Coding Challenge #4
+
+// Test data:
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+
+// OK is:
+// current > recommended * 0.9 && current < recommended * 1.1;
+
+// 1
+dogs.forEach(function (dog) {
+  dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28);
+});
+
+// 2
+dogs.forEach(function (dog, index) {
+  dog.owners.find(owner => {
+    if (owner === 'Sarah') {
+      let current = dogs[index].curFood;
+      let recommended = dogs[index].recommendedFood;
+      console.log(
+        `Sarah's dog ${
+          current > recommended * 0.9 && current < recommended * 1.1
+            ? 'eats OK'
+            : 'do not eat OK'
+        }`
+      );
+    }
+  });
+});
+//current > recommended * 0.9 && current < recommended * 1.1;
+// 3
+
+let ownersEatTooLittle = dogs
+  .filter((dog, index) => !(dog.curFood > dog.recommendedFood * 0.9))
+  .reduce(
+    (accumulator, currentValue, ci, array) =>
+      accumulator + ',' + currentValue.owners,
+    []
   )
-);
+  .split(',')
+  .splice(1);
+
+// .ownersEatTooMuch.push(dog[index].owners);
+
+console.log(ownersEatTooLittle);
+
+let ownersEatTooMuch = dogs
+  .filter((dog, index) => !(dog.curFood < dog.recommendedFood * 1.1))
+  .reduce(
+    (accumulator, currentValue, ci, array) =>
+      accumulator + ',' + currentValue.owners,
+    []
+  )
+  .split(',')
+  .splice(1);
+
+console.log(ownersEatTooMuch);
