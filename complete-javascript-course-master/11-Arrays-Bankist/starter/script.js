@@ -775,3 +775,57 @@ let ownersEatTooMuch = dogs
   .splice(1);
 
 console.log(ownersEatTooMuch);
+
+// 4
+
+console.log(`${ownersEatTooMuch.join(' and ')} dogs eat to much!`);
+console.log(`${ownersEatTooLittle.join(' and ')} dogs eat to little!`);
+
+// 5
+let flag = false;
+dogs.find((element, index, array) => {
+  if (element.curFood === element.recommendedFood) {
+    flag = true;
+  }
+});
+console.log(flag);
+
+// 6
+let dogFlag = false;
+dogs.find(element => {
+  if (
+    element.curFood > element.recommendedFood * 0.9 &&
+    element.curFood < element.recommendedFood * 1.1
+  ) {
+    dogFlag = true;
+  }
+});
+console.log(dogFlag);
+// current > recommended * 0.9 && current < recommended * 1.1;
+
+// 7
+let dogsEatingOk = [];
+dogs.forEach((element, index) => {
+  if (
+    element.curFood > element.recommendedFood * 0.9 &&
+    element.curFood < element.recommendedFood * 1.1
+  ) {
+    dogsEatingOk.push(`Dog nr ${index} eats OK`);
+  }
+});
+
+// 8
+
+let dogsCopy = [...dogs];
+
+function compare(a, b) {
+  if (a.recommendedFood < b.recommendedFood) {
+    return -1;
+  }
+  if (a.recommendedFood > b.recommendedFood) {
+    return 1;
+  }
+  return 0;
+}
+
+console.log(dogsCopy.sort(compare));
