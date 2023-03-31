@@ -715,6 +715,123 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 // 167. Coding Challenge #4
 
+// // Test data:
+// const dogs = [
+//   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+//   { weight: 8, curFood: 200, owners: ['Matilda'] },
+//   { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+//   { weight: 32, curFood: 340, owners: ['Michael'] },
+// ];
+
+// // OK is:
+// // current > recommended * 0.9 && current < recommended * 1.1;
+
+// // 1
+// dogs.forEach(function (dog) {
+//   dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28);
+// });
+
+// // 2
+// dogs.forEach(function (dog, index) {
+//   dog.owners.find(owner => {
+//     if (owner === 'Sarah') {
+//       let current = dogs[index].curFood;
+//       let recommended = dogs[index].recommendedFood;
+//       console.log(
+//         `Sarah's dog ${
+//           current > recommended * 0.9 && current < recommended * 1.1
+//             ? 'eats OK'
+//             : 'do not eat OK'
+//         }`
+//       );
+//     }
+//   });
+// });
+// //current > recommended * 0.9 && current < recommended * 1.1;
+// // 3
+
+// let ownersEatTooLittle = dogs
+//   .filter((dog, index) => !(dog.curFood > dog.recommendedFood * 0.9))
+//   .reduce(
+//     (accumulator, currentValue, ci, array) =>
+//       accumulator + ',' + currentValue.owners,
+//     []
+//   )
+//   .split(',')
+//   .splice(1);
+
+// // .ownersEatTooMuch.push(dog[index].owners);
+
+// console.log(ownersEatTooLittle);
+
+// let ownersEatTooMuch = dogs
+//   .filter((dog, index) => !(dog.curFood < dog.recommendedFood * 1.1))
+//   .reduce(
+//     (accumulator, currentValue, ci, array) =>
+//       accumulator + ',' + currentValue.owners,
+//     []
+//   )
+//   .split(',')
+//   .splice(1);
+
+// console.log(ownersEatTooMuch);
+
+// // 4
+
+// console.log(`${ownersEatTooMuch.join(' and ')} dogs eat to much!`);
+// console.log(`${ownersEatTooLittle.join(' and ')} dogs eat to little!`);
+
+// // 5
+// let flag = false;
+// dogs.find((element, index, array) => {
+//   if (element.curFood === element.recommendedFood) {
+//     flag = true;
+//   }
+// });
+// console.log(flag);
+
+// // 6
+// let dogFlag = false;
+// dogs.find(element => {
+//   if (
+//     element.curFood > element.recommendedFood * 0.9 &&
+//     element.curFood < element.recommendedFood * 1.1
+//   ) {
+//     dogFlag = true;
+//   }
+// });
+// console.log(dogFlag);
+// // current > recommended * 0.9 && current < recommended * 1.1;
+
+// // 7
+// let dogsEatingOk = [];
+// dogs.forEach((element, index) => {
+//   if (
+//     element.curFood > element.recommendedFood * 0.9 &&
+//     element.curFood < element.recommendedFood * 1.1
+//   ) {
+//     dogsEatingOk.push(`Dog nr ${index} eats OK`);
+//   }
+// });
+
+// // 8
+
+// let dogsCopy = [...dogs];
+
+// function compare(a, b) {
+//   if (a.recommendedFood < b.recommendedFood) {
+//     return -1;
+//   }
+//   if (a.recommendedFood > b.recommendedFood) {
+//     return 1;
+//   }
+//   return 0;
+// }
+
+// console.log(dogsCopy.sort(compare));
+
+// 167. Coding Challenge #4 by Teacher
+
 // Test data:
 const dogs = [
   { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
@@ -723,109 +840,53 @@ const dogs = [
   { weight: 32, curFood: 340, owners: ['Michael'] },
 ];
 
-// OK is:
-// current > recommended * 0.9 && current < recommended * 1.1;
+// 1.
+dogs.forEach(dog => (dog.recFood = Math.trunc(dog.weight ** 0.75 * 28)));
 
-// 1
-dogs.forEach(function (dog) {
-  dog.recommendedFood = Math.round(dog.weight ** 0.75 * 28);
-});
+// 2.
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
 
-// 2
-dogs.forEach(function (dog, index) {
-  dog.owners.find(owner => {
-    if (owner === 'Sarah') {
-      let current = dogs[index].curFood;
-      let recommended = dogs[index].recommendedFood;
-      console.log(
-        `Sarah's dog ${
-          current > recommended * 0.9 && current < recommended * 1.1
-            ? 'eats OK'
-            : 'do not eat OK'
-        }`
-      );
-    }
-  });
-});
-//current > recommended * 0.9 && current < recommended * 1.1;
+console.log(dogSarah);
+console.log(
+  `Sarah's dog is eating too ${
+    dogSarah.curFood > dogSarah.recFood ? 'much' : 'little'
+  }`
+);
+
 // 3
 
-let ownersEatTooLittle = dogs
-  .filter((dog, index) => !(dog.curFood > dog.recommendedFood * 0.9))
-  .reduce(
-    (accumulator, currentValue, ci, array) =>
-      accumulator + ',' + currentValue.owners,
-    []
-  )
-  .split(',')
-  .splice(1);
-
-// .ownersEatTooMuch.push(dog[index].owners);
-
-console.log(ownersEatTooLittle);
-
-let ownersEatTooMuch = dogs
-  .filter((dog, index) => !(dog.curFood < dog.recommendedFood * 1.1))
-  .reduce(
-    (accumulator, currentValue, ci, array) =>
-      accumulator + ',' + currentValue.owners,
-    []
-  )
-  .split(',')
-  .splice(1);
+const ownersEatTooMuch = dogs
+  .filter(dog => dog.curFood > dog.recFood)
+  .map(dog => dog.owners)
+  .flat();
 
 console.log(ownersEatTooMuch);
 
-// 4
+const ownersEatTooLittle = dogs
+  .filter(dog => dog.curFood < dog.recFood)
+  .map(dog => dog.owners)
+  .flat();
 
-console.log(`${ownersEatTooMuch.join(' and ')} dogs eat to much!`);
-console.log(`${ownersEatTooLittle.join(' and ')} dogs eat to little!`);
+console.log(ownersEatTooLittle);
+
+// 4
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
 
 // 5
-let flag = false;
-dogs.find((element, index, array) => {
-  if (element.curFood === element.recommendedFood) {
-    flag = true;
-  }
-});
-console.log(flag);
+console.log(dogs.some(dog => dog.curFood === dog.recFood));
 
-// 6
-let dogFlag = false;
-dogs.find(element => {
-  if (
-    element.curFood > element.recommendedFood * 0.9 &&
-    element.curFood < element.recommendedFood * 1.1
-  ) {
-    dogFlag = true;
-  }
-});
-console.log(dogFlag);
-// current > recommended * 0.9 && current < recommended * 1.1;
+// 6.
+const checkEatingOkay = dog =>
+  dog.curFood > dog.recFood * 0.9 && dog.curFood < dog.recFood * 1.1;
 
-// 7
-let dogsEatingOk = [];
-dogs.forEach((element, index) => {
-  if (
-    element.curFood > element.recommendedFood * 0.9 &&
-    element.curFood < element.recommendedFood * 1.1
-  ) {
-    dogsEatingOk.push(`Dog nr ${index} eats OK`);
-  }
-});
+console.log(dogs.some(checkEatingOkay));
 
-// 8
+// 7.
 
-let dogsCopy = [...dogs];
+console.log(dogs.filter(checkEatingOkay));
 
-function compare(a, b) {
-  if (a.recommendedFood < b.recommendedFood) {
-    return -1;
-  }
-  if (a.recommendedFood > b.recommendedFood) {
-    return 1;
-  }
-  return 0;
-}
+// 8.
+const dogsSorted = dogs.slice().sort((a, b) => a.recFood - b.recFood);
 
-console.log(dogsCopy.sort(compare));
+console.log(dogsSorted);
