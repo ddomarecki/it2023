@@ -347,14 +347,38 @@ btnSort.addEventListener('click', function (e) {
 
 // 173. Numeric Separators
 
-// 287,460,000,000
-const diameter = 287_460_000_000;
-console.log(diameter);
+// // 287,460,000,000
+// const diameter = 287_460_000_000;
+// console.log(diameter);
 
-const priceCents = 345_99;
+// const priceCents = 345_99;
 
-const transferFee1 = 15_00;
-const transferFee2 = 1_500;
+// const transferFee1 = 15_00;
+// const transferFee2 = 1_500;
 
-console.log(Number('230_000')); // NaN
-console.log(parseInt('230_000')); // 230
+// console.log(Number('230_000')); // NaN
+// console.log(parseInt('230_000')); // 230
+
+// 174. Working with BigInt
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+
+console.log(4848485834865386883686348634836486348648643864n);
+console.log(BigInt(4848485834));
+
+// Operations
+console.log(10000n + 1000n);
+
+const huge = 221423524353242636436364634346634n;
+const num = 23;
+console.log(huge * BigInt(num));
+
+console.log(20n > 15);
+console.log(20n === 20); // false
+console.log(typeof 20n);
+console.log(20n == '20'); // true
+
+console.log(huge + 'is really big!!!');
+
+// Divisions
+console.log(10n / 3n);
