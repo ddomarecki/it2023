@@ -280,21 +280,30 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
-btnLoan.addEventListener('click', function (e) {
-  e.preventDefault();
+btnLoan.addEventListener(
+  'click',
+  function (e) {
+    e.preventDefault();
 
-  const amount = Math.floor(inputLoanAmount.value);
+    const amount = Math.floor(inputLoanAmount.value);
 
-  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
-    // Add movement
-    currentAccount.movements.push(amount);
-    // Add loan date
-    currentAccount.movementsDates.push(new Date().toISOString());
-    // Update UI
-    updateUI(currentAccount);
-  }
-  inputLoanAmount.value = '';
-});
+    if (
+      amount > 0 &&
+      currentAccount.movements.some(mov => mov >= amount * 0.1)
+    ) {
+      setTimeout(function () {
+        // Add movement
+        currentAccount.movements.push(amount);
+        // Add loan date
+        currentAccount.movementsDates.push(new Date().toISOString());
+        // Update UI
+        updateUI(currentAccount);
+      }, 2500);
+      inputLoanAmount.value = '';
+    }
+  },
+  2500
+);
 
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
@@ -516,16 +525,42 @@ console.log(new Date(3 * 24 * 60 * 60 * 1000));
 
 // 179. Internationalizing Numbers (Intl)
 
-const num = 3884764.23;
-const options = {
-  style: 'currency',
-  unit: 'mile-per-hour',
-  currency: 'EUR',
-  // useGrouping: false
-};
-console.log(new Intl.NumberFormat('en-US', options).format(num));
-console.log(
-  'Browser: ',
-  new Intl.NumberFormat(navigator.language, options).format(num)
+// const num = 3884764.23;
+// const options = {
+//   style: 'currency',
+//   unit: 'mile-per-hour',
+//   currency: 'EUR',
+//   // useGrouping: false
+// };
+// console.log(new Intl.NumberFormat('en-US', options).format(num));
+// console.log(
+//   'Browser: ',
+//   new Intl.NumberFormat(navigator.language, options).format(num)
+// );
+// console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
+
+// 180. Timers: setTimeout and setInterval
+
+// setTimeout()
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) =>
+    console.log('here is your pizza 🍕' + 'with ' + ing1 + ' and ' + ing2),
+  3000,
+  ...ingredients
 );
-console.log('Germany: ', new Intl.NumberFormat('de-DE', options).format(num));
+console.log('waiting');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// setInterval
+setInterval(function () {
+  const now = new Date();
+  console.log(
+    now.getHours() + ':' + now.getMinutes() + ':' + now.getSeconds() + '',
+
+    now.getDate(),
+    now.getMonth(),
+    now.getFullYear()
+  );
+}, 1000);
