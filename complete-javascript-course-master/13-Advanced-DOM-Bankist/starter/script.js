@@ -35,4 +35,6 @@ document.addEventListener('keydown', function (e) {
 
 // Section 13: Advanced Dom and Events
 
-// 18. PROJECT: "Bankist" Website
+// 184. PROJECT: "Bankist" Website
+
+// 185. How the DOM Really Works
