@@ -80,48 +80,82 @@ document
 
 // 187. Styles, Attributes and Classes
 
-// Styles
-message.style.backgroundColor = '#37383d';
-message.style.width = '102%';
-message.style.height = '80px';
+// // Styles
+// message.style.backgroundColor = '#37383d';
+// message.style.width = '102%';
+// message.style.height = '80px';
 
-console.log(getComputedStyle(message).color);
-console.log(getComputedStyle(message).height);
+// console.log(getComputedStyle(message).color);
+// console.log(getComputedStyle(message).height);
 
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
+// message.style.height =
+//   Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
 
-document.documentElement.style.setProperty('--color-primary', 'orange');
+// document.documentElement.style.setProperty('--color-primary', 'orange');
 
-// Attributes
-const logo = document.querySelector('.nav__logo');
-console.log(logo.src);
-console.log(logo.alt);
-console.log(logo.className);
+// // Attributes
+// const logo = document.querySelector('.nav__logo');
+// console.log(logo.src);
+// console.log(logo.alt);
+// console.log(logo.className);
 
-logo.alt = 'Beautiful minimalist logo';
+// logo.alt = 'Beautiful minimalist logo';
 
-// Non-standard
-console.log(logo.designer);
-console.log(logo.getAttribute('designer'));
-logo.setAttribute('company', 'Bankist');
+// // Non-standard
+// console.log(logo.designer);
+// console.log(logo.getAttribute('designer'));
+// logo.setAttribute('company', 'Bankist');
 
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
+// console.log(logo.src);
+// console.log(logo.getAttribute('src'));
 
-const link = document.querySelector('.nav__link--btn');
-console.log(link.href);
-console.log(link.getAttribute('href'));
+// const link = document.querySelector('.nav__link--btn');
+// console.log(link.href);
+// console.log(link.getAttribute('href'));
 
-// Data attributes
-console.log(logo.dataset.versionNumber);
+// // Data attributes
+// console.log(logo.dataset.versionNumber);
 
-// Classes
+// // Classes
 
-logo.classList.add('c', 'j');
-logo.classList.remove('c');
-logo.classList.toggle('c');
-logo.classList.contains('c');
+// logo.classList.add('c', 'j');
+// logo.classList.remove('c');
+// logo.classList.toggle('c');
+// logo.classList.contains('c');
 
-// Don't use
-logo.clasName = 'Damian';
+// // Don't use
+// logo.clasName = 'Damian';
+
+// 188. Implementing Smooth Scrolling
+
+const btnScrollTo = document.querySelector('.btn--scroll-to');
+const section1 = document.querySelector('#section--1');
+
+btnScrollTo.addEventListener('click', function (e) {
+  const s1coords = section1.getBoundingClientRect();
+  console.log(s1coords);
+  console.log(e.target.getBoundingClientRect);
+  console.log('current scroll (x/y', window.pageXOffset, window.pageYOffset);
+  console.log(
+    'height/width of viewport',
+    // current windows position:
+    document.documentElement.clientHeight,
+    document.documentElement.clientWidth
+  );
+
+  // scrolling
+  // window.scrollTo(
+  //   s1coords.left + window.pageXOffset,
+  //   s1coords.top + window.pageYOffset
+  // );
+
+  // old way of scrolling into second section here:
+  // window.scrollTo({
+  //   left: s1coords.left + window.pageXOffset,
+  //   top: s1coords.top + window.pageYOffset,
+  //   behavior: 'smooth',
+  // });
+
+  // new way:
+  section1.scrollIntoView({ behavior: 'smooth' });
+});
