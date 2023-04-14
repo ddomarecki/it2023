@@ -180,3 +180,6 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // 3 sposób of handling addEventListener:
 // <h1 onclick="alert('XD')">
+
+// 190. Event Propagation: Bubbling and Capturing
+// theory, an introduction to propagation presented
