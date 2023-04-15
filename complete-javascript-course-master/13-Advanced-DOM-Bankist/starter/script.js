@@ -91,6 +91,33 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
   }
 });
 
+// Tabbed component
+
+const tabs = document.querySelectorAll('.operations__tab');
+const tabsContainer = document.querySelector('.operations__tab-container');
+const tabsContent = document.querySelectorAll('.operations__content');
+
+// event delegation:
+tabsContainer.addEventListener('click', function (e) {
+  const clicked = e.target.closest('.operations__tab');
+  // console.log(clicked);
+
+  // Guard clause
+  if (!clicked) return;
+
+  // Remove active classes
+  tabs.forEach(t => t.classList.remove('operations__tab--active'));
+  tabsContent.forEach(c => c.classList.remove('operations__content--active'));
+
+  // Activate tab
+  clicked.classList.add('operations__tab--active');
+
+  // Activates content area
+  document
+    .querySelector(`.operations__content--${clicked.dataset.tab}`)
+    .classList.add('operations__content--active');
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -282,31 +309,33 @@ document
 
 // 193. DOM Traversing
 
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
-// Going downwards: child
-console.log(h1.querySelectorAll('.highlight'));
-console.log(h1.childNodes);
-console.log(h1.children); // all children
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'white';
+// // Going downwards: child
+// console.log(h1.querySelectorAll('.highlight'));
+// console.log(h1.childNodes);
+// console.log(h1.children); // all children
+// h1.firstElementChild.style.color = 'white';
+// h1.lastElementChild.style.color = 'white';
 
-// Going upwards: parents
+// // Going upwards: parents
 
-console.log(h1.parentNode);
-console.log(h1.parentElement);
+// console.log(h1.parentNode);
+// console.log(h1.parentElement);
 
-h1.closest('.header').style.background = 'var(--color-primary)';
+// h1.closest('.header').style.background = 'var(--color-primary)';
 
-// Going sideways: siblings
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
+// // Going sideways: siblings
+// console.log(h1.previousElementSibling);
+// console.log(h1.nextElementSibling);
 
-console.log(h1.previousSibling);
-console.log(h1.nextSibling);
+// console.log(h1.previousSibling);
+// console.log(h1.nextSibling);
 
-console.log(h1.parentElement.children); // all siblings
+// console.log(h1.parentElement.children); // all siblings
 
-[...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.3)';
-});
+// [...h1.parentElement.children].forEach(function (el) {
+//   if (el !== h1) el.style.transform = 'scale(0.3)';
+// });
+
+// 194. Building a Tabbed Component
