@@ -224,16 +224,16 @@ document
 
 // 189. Types of Events and Event Handlers
 
-const h1 = document.querySelector('h1');
+// const h1 = document.querySelector('h1');
 
-const alertH1 = function (e) {
-  alert('addEventListener: Great! You are reading the heading :D');
-  // h1.removeEventListener('mouseenter', alertH1);
-};
+// const alertH1 = function (e) {
+//   alert('addEventListener: Great! You are reading the heading :D');
+//   // h1.removeEventListener('mouseenter', alertH1);
+// };
 
-h1.addEventListener('mouseenter', alertH1);
+// h1.addEventListener('mouseenter', alertH1);
 
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
+// setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 
 // older method:
 // h1.onmouseenter = function (e) {
@@ -279,3 +279,34 @@ setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
 // );
 
 // 192. Event Delegation: Implementing Page Navigation
+
+// 193. DOM Traversing
+
+const h1 = document.querySelector('h1');
+
+// Going downwards: child
+console.log(h1.querySelectorAll('.highlight'));
+console.log(h1.childNodes);
+console.log(h1.children); // all children
+h1.firstElementChild.style.color = 'white';
+h1.lastElementChild.style.color = 'white';
+
+// Going upwards: parents
+
+console.log(h1.parentNode);
+console.log(h1.parentElement);
+
+h1.closest('.header').style.background = 'var(--color-primary)';
+
+// Going sideways: siblings
+console.log(h1.previousElementSibling);
+console.log(h1.nextElementSibling);
+
+console.log(h1.previousSibling);
+console.log(h1.nextSibling);
+
+console.log(h1.parentElement.children); // all siblings
+
+[...h1.parentElement.children].forEach(function (el) {
+  if (el !== h1) el.style.transform = 'scale(0.3)';
+});
