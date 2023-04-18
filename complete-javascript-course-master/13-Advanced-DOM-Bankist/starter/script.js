@@ -142,12 +142,12 @@ nav.addEventListener('mouseover', handleHover.bind(0.5));
 nav.addEventListener('mouseout', handleHover.bind(1));
 
 // Sticky navigation
-// const initialCoords = section1.getBoundingClientRect();
-// window.addEventListener('scroll', function (e) {
-//   console.log(window.scrollY);
-//   if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
-//   else nav.classList.remove('sticky');
-// });
+const initialCoords = section1.getBoundingClientRect();
+window.addEventListener('scroll', function (e) {
+  // console.log(window.scrollY);
+  if (window.scrollY > initialCoords.top) nav.classList.add('sticky');
+  else nav.classList.remove('sticky');
+});
 
 // Sticky navigation: Intersection Observer API
 
@@ -164,6 +164,7 @@ nav.addEventListener('mouseout', handleHover.bind(1));
 
 // const observer = new IntersectionObserver(obsCallback, obsOptions);
 // observer.observe(section1);
+
 const header = document.querySelector('.header');
 
 const navHeight = nav.getBoundingClientRect().height;
@@ -184,6 +185,28 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 
 headerObserver.observe(header);
 
+// Reveal sections
+
+const allSections = document.querySelectorAll('.section');
+
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  if (!entry.isIntersecting) return;
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15,
+});
+
+allSections.forEach(function (section) {
+  // console.log(section);
+  sectionObserver.observe(section);
+  section.classList.add('section--hidden');
+});
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -202,7 +225,7 @@ console.log(document.headt);
 console.log(document.body);
 
 // const header = document.querySelector('.header');
-const allSections = document.querySelectorAll('.section');
+// const allSections = document.querySelectorAll('.section');
 
 document.getElementById('section--1');
 const allButtons = document.getElementsByTagName('button');
@@ -409,3 +432,5 @@ document
 // 196. Implementing a Sticky Navigation: The Scroll Event
 
 // 197. A Better Way: The Intersection Observer API
+
+// 198. Revealing Elements on Scroll
