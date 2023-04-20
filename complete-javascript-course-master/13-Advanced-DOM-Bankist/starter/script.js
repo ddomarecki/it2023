@@ -572,3 +572,5 @@ window.addEventListener('load', function (e) {
 //   console.log(e);
 //   e.returnValue = "";
 // })
+
+// 203. Efficient Script Loading: defer and async
