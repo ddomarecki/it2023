@@ -34,7 +34,7 @@ Person.prototype.calcAge = function () {
 
 damian.calcAge();
 
-console.log(damian.__proto__);
+console.log('PROTO', damian.__proto__.__proto__);
 console.log(damian.__proto__ === Person.prototype);
 
 console.log(Person.prototype.isPrototypeOf(damian));
@@ -43,3 +43,5 @@ Person.prototype.species = 'Homo Sapiens';
 
 console.log(damian.hasOwnProperty('firstName'));
 console.log(damian.hasOwnProperty('species'));
+
+// 210. Prototypal Inheritance and The Prototype Chain - THEORY
