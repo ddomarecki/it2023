@@ -6,18 +6,25 @@
 
 // 208. Constructor Functions and the new Operator
 
-// const Person = function (firstName, birthYear) {
-//   // Instance properties
-//   this.firstName = firstName;
-//   this.birthYear = birthYear;
+const Person = function (firstName, birthYear) {
+  // Instance properties
+  this.firstName = firstName;
+  this.birthYear = birthYear;
 
-// Never do this
+//// Never do this
 //   this.calcAge = function () {
 //     console.log(2037 - this.birthYear);
 //   };
 // };
 
-// const damian = new Person('Damian', 1986);
+const damian = new Person('Damian', 1986);
+
+// static function:
+
+Person.hey = function() {
+    console.log("hey there 👍");
+}
+Person.hey();
 
 // const matilda = new Person('Matilda', 2017);
 // const jack = new Person('jack', 1975);
@@ -79,13 +86,14 @@ class PersonCl {
     this.fullName = fullName;
     this.birthYear = birthYear;
   }
+  //Instance methods
   // Methods will be added to .prototype property of PersonCl
   calcAge() {
     console.log(2037 - this.birthYear);
   }
 
   greet() {
-    console.log(`Hey ${this.firstName}`);
+    console.log(`Hey ${this.fullName}`);
   }
 
   get age() {
@@ -99,6 +107,13 @@ class PersonCl {
 
   get fullName() {
     return this._fullName;
+    // console.log(this._fullName);
+    // console.log('HI!');
+  }
+
+  // Static method
+  static hey() {
+    console.log("hey");
   }
 }
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -114,6 +129,9 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 jessica.greet();
 
 const walter = new PersonCl('Walter', 1965);
+
+
+PersonCl.hey();
 
 // 214. Setters and Getters
 
@@ -153,3 +171,5 @@ Car.prototype.brake = function () {
 
 const car1 = new Car('BMW', 120);
 const car2 = new Car('Merceder', 95);
+
+// 215. Static Methods
