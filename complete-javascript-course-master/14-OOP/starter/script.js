@@ -6,74 +6,104 @@
 
 // 208. Constructor Functions and the new Operator
 
-const Person = function (firstName, birthYear) {
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+// const Person = function (firstName, birthYear) {
+//   // Instance properties
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
 
-  // Never do this
-  //   this.calcAge = function () {
-  //     console.log(2037 - this.birthYear);
-  //   };
-};
+// Never do this
+//   this.calcAge = function () {
+//     console.log(2037 - this.birthYear);
+//   };
+// };
 
-const damian = new Person('Damian', 1986);
+// const damian = new Person('Damian', 1986);
 
-const matilda = new Person('Matilda', 2017);
-const jack = new Person('jack', 1975);
+// const matilda = new Person('Matilda', 2017);
+// const jack = new Person('jack', 1975);
 
-console.log(damian, matilda, jack);
+// console.log(damian, matilda, jack);
 
-console.log(damian instanceof Person);
+// console.log(damian instanceof Person);
 
-// 209. Prototypes
-// adding function to Person constructor:
-Person.prototype.calcAge = function () {
-  console.log(2037 - this.birthYear);
-};
+// // 209. Prototypes
+// // adding function to Person constructor:
+// Person.prototype.calcAge = function () {
+//   console.log(2037 - this.birthYear);
+// };
 
-damian.calcAge();
+// damian.calcAge();
 
-console.log('PROTO', damian.__proto__.__proto__);
-console.log(damian.__proto__ === Person.prototype);
+// console.log('PROTO', damian.__proto__.__proto__);
+// console.log(damian.__proto__ === Person.prototype);
 
-console.log(Person.prototype.isPrototypeOf(damian));
+// console.log(Person.prototype.isPrototypeOf(damian));
 
-Person.prototype.species = 'Homo Sapiens';
+// Person.prototype.species = 'Homo Sapiens';
 
-console.log(damian.hasOwnProperty('firstName'));
-console.log(damian.hasOwnProperty('species'));
+// console.log(damian.hasOwnProperty('firstName'));
+// console.log(damian.hasOwnProperty('species'));
 
-// 210. Prototypal Inheritance and The Prototype Chain - THEORY
+// // 210. Prototypal Inheritance and The Prototype Chain - THEORY
 
-// 211. Prototypal Inheritance on Built-In Objects
+// // 211. Prototypal Inheritance on Built-In Objects
 
-console.log(damian.__proto__);
-console.log(damian.__proto__.__proto__);
+// console.log(damian.__proto__);
+// console.log(damian.__proto__.__proto__);
 
-console.dir(Person.prototype.constructor);
+// console.dir(Person.prototype.constructor);
 
-const arr = [1, 2, 3, 4, 5, 6, 4, 3, 2, 4, 5];
-console.log(arr.__proto__);
-console.log(arr.__proto__ === Array.prototype);
-console.log(arr.__proto__.__proto__);
+// const arr = [1, 2, 3, 4, 5, 6, 4, 3, 2, 4, 5];
+// console.log(arr.__proto__);
+// console.log(arr.__proto__ === Array.prototype);
+// console.log(arr.__proto__.__proto__);
 
-Array.prototype.unique = function () {
-  return [...new Set(this)];
-};
+// Array.prototype.unique = function () {
+//   return [...new Set(this)];
+// };
 
-console.log(arr.unique());
+// console.log(arr.unique());
 
-const h1 = document.querySelector('h1');
-console.dir(h1);
-console.dir(dir => x + 1);
+// const h1 = document.querySelector('h1');
+// console.dir(h1);
+// console.dir(dir => x + 1);
+
+// 213. ES6 Classes
+
+//class expression
+// const PersonCl = class {};
+
+//class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+  // Methods will be added to .prototype property of PersonCl
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+}
+const jessica = new PersonCl('Jessica', 1996);
+
+jessica.calcAge();
+console.log(jessica.__proto__ === PersonCl.prototype);
+
+// PersonCl.prototype.greet = function() {
+//     console.log(`Hey ${this.firstName}`);
+// }
+
+jessica.greet();
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 
 // 212. Coding Challenge #1
-
 const Car = function (make, speed) {
   (this.make = make), (this.speed = speed);
 };
