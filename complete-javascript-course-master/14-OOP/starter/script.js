@@ -11,19 +11,19 @@ const Person = function (firstName, birthYear) {
   this.firstName = firstName;
   this.birthYear = birthYear;
 
-//// Never do this
-//   this.calcAge = function () {
-//     console.log(2037 - this.birthYear);
-//   };
-// };
+  //// Never do this
+  //   this.calcAge = function () {
+  //     console.log(2037 - this.birthYear);
+  //   };
+};
 
 const damian = new Person('Damian', 1986);
 
 // static function:
 
-Person.hey = function() {
-    console.log("hey there 👍");
-}
+Person.hey = function () {
+  console.log('hey there 👍');
+};
 Person.hey();
 
 // const matilda = new Person('Matilda', 2017);
@@ -113,7 +113,7 @@ class PersonCl {
 
   // Static method
   static hey() {
-    console.log("hey");
+    console.log('hey');
   }
 }
 const jessica = new PersonCl('Jessica Davis', 1996);
@@ -128,8 +128,7 @@ console.log(jessica.__proto__ === PersonCl.prototype);
 
 jessica.greet();
 
-const walter = new PersonCl('Walter', 1965);
-
+const walter = new PersonCl('Walter Pol', 1965);
 
 PersonCl.hey();
 
@@ -149,6 +148,32 @@ const account = {
 
 console.log(account.latest);
 account.latest = 50;
+
+// 215. Static Methods
+
+// 216. Object.create
+
+const PersonProto = {
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  },
+
+  init(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  },
+};
+
+const steven = Object.create(PersonProto);
+steven.name = 'Steven';
+steven.birthYear = 2002;
+
+console.log(steven.__proto__ === PersonProto);
+
+const sarah = Object.create(PersonProto);
+
+sarah.init('Sarah', 1979);
+sarah.calcAge();
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
@@ -171,5 +196,3 @@ Car.prototype.brake = function () {
 
 const car1 = new Car('BMW', 120);
 const car2 = new Car('Merceder', 95);
-
-// 215. Static Methods
