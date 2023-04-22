@@ -181,7 +181,8 @@ sarah.calcAge();
 
 // 212. Coding Challenge #1
 const Car = function (make, speed) {
-  (this.make = make), (this.speed = speed);
+  this.make = make;
+  this.speed = speed;
 };
 
 Car.prototype.accelerate = function () {
@@ -196,3 +197,31 @@ Car.prototype.brake = function () {
 
 const car1 = new Car('BMW', 120);
 const car2 = new Car('Merceder', 95);
+
+// 217. Coding Challenge #2
+
+class CarlCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed = this.speed + 10;
+    console.log(this.speed);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(this.speed);
+  }
+  get speedUS() {
+    return `${this.speed / 1.6} mi/h`;
+  }
+
+  set speedUS(speedInMiH) {
+    this.speed = speedInMiH * 1.6;
+  }
+}
+
+const car1000 = new CarlCl('Ford', 120);
