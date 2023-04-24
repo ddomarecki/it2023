@@ -6,25 +6,25 @@
 
 // 208. Constructor Functions and the new Operator
 
-const Person = function (firstName, birthYear) {
-  // Instance properties
-  this.firstName = firstName;
-  this.birthYear = birthYear;
+// const Person = function (firstName, birthYear) {
+//   // Instance properties
+//   this.firstName = firstName;
+//   this.birthYear = birthYear;
 
-  //// Never do this
-  //   this.calcAge = function () {
-  //     console.log(2037 - this.birthYear);
-  //   };
-};
+//   //// Never do this
+//   //   this.calcAge = function () {
+//   //     console.log(2037 - this.birthYear);
+//   //   };
+// };
 
-const damian = new Person('Damian', 1986);
+// const damian = new Person('Damian', 1986);
 
 // static function:
 
-Person.hey = function () {
-  console.log('hey there 👍');
-};
-Person.hey();
+// Person.hey = function () {
+//   console.log('hey there 👍');
+// };
+// Person.hey();
 
 // const matilda = new Person('Matilda', 2017);
 // const jack = new Person('jack', 1975);
@@ -174,6 +174,45 @@ const sarah = Object.create(PersonProto);
 
 sarah.init('Sarah', 1979);
 sarah.calcAge();
+
+Student.prototype.constructor = Student;
+console.dir(Student.prototype.constructor);
+// 218. Inheritance Between "Classes": Constructor Functions
+
+const Person = function (firstName, birthYear) {
+  this.firstName = firstName;
+  this.birthYear = birthYear;
+};
+
+Person.prototype.calcAge = function () {
+  console.log(2037 - this.birthYear);
+};
+
+const Student = function (firstName, birthYear, course) {
+  Person.call(this, firstName, birthYear);
+  this.course = course;
+};
+
+// Linking prototypes
+Student.prototype = Object.create(Person.prototype);
+
+Student.prototype.introduce = function () {
+  console.log(`My name is ${this.firstName} and I study ${this.course}`);
+};
+
+const mike = new Student('Mike', 2020, 'Computer Science');
+
+mike.introduce();
+mike.calcAge();
+
+console.log(mike.__proto__);
+console.log(mike.__proto__.__proto__);
+
+console.log(mike instanceof Student);
+
+console.log(mike instanceof Student);
+console.log(mike instanceof Person);
+console.log(mike instanceof Object);
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
