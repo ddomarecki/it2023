@@ -81,56 +81,56 @@
 // const PersonCl = class {};
 
 //class declaration
-class PersonCl {
-  constructor(fullName, birthYear) {
-    this.fullName = fullName;
-    this.birthYear = birthYear;
-  }
-  //Instance methods
-  // Methods will be added to .prototype property of PersonCl
-  calcAge() {
-    console.log(2037 - this.birthYear);
-  }
+// class PersonCl {
+//   constructor(fullName, birthYear) {
+//     this.fullName = fullName;
+//     this.birthYear = birthYear;
+//   }
+//   //Instance methods
+//   // Methods will be added to .prototype property of PersonCl
+//   calcAge() {
+//     console.log(2037 - this.birthYear);
+//   }
 
-  greet() {
-    console.log(`Hey ${this.fullName}`);
-  }
+//   greet() {
+//     console.log(`Hey ${this.fullName}`);
+//   }
 
-  get age() {
-    return 2037 - this.birthYear;
-  }
+//   get age() {
+//     return 2037 - this.birthYear;
+//   }
 
-  set fullName(name) {
-    if (name.includes(' ')) this._fullName = name;
-    else alert(`${name} is not a full name!`);
-  }
+//   set fullName(name) {
+//     if (name.includes(' ')) this._fullName = name;
+//     else alert(`${name} is not a full name!`);
+//   }
 
-  get fullName() {
-    return this._fullName;
-    // console.log(this._fullName);
-    // console.log('HI!');
-  }
+//   get fullName() {
+//     return this._fullName;
+//     // console.log(this._fullName);
+//     // console.log('HI!');
+//   }
 
-  // Static method
-  static hey() {
-    console.log('hey');
-  }
-}
-const jessica = new PersonCl('Jessica Davis', 1996);
+//   // Static method
+//   static hey() {
+//     console.log('hey');
+//   }
+// }
+// const jessica = new PersonCl('Jessica Davis', 1996);
 
-jessica.calcAge();
-console.log(jessica.age);
-console.log(jessica.__proto__ === PersonCl.prototype);
+// jessica.calcAge();
+// console.log(jessica.age);
+// console.log(jessica.__proto__ === PersonCl.prototype);
 
 // PersonCl.prototype.greet = function() {
 //     console.log(`Hey ${this.firstName}`);
 // }
 
-jessica.greet();
+// jessica.greet();
 
-const walter = new PersonCl('Walter Pol', 1965);
+// const walter = new PersonCl('Walter Pol', 1965);
 
-PersonCl.hey();
+// PersonCl.hey();
 
 // 214. Setters and Getters
 
@@ -214,6 +214,65 @@ console.log(mike instanceof Student);
 console.log(mike instanceof Student);
 console.log(mike instanceof Person);
 console.log(mike instanceof Object);
+
+// 220. Inheritance Between "Classes": ES6 Classes
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+  //Instance methods
+  // Methods will be added to .prototype property of PersonCl
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.fullName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  // Static method
+  static hey() {
+    console.log('hey');
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+  caclcAge() {
+    console.log(
+      `I'm ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }`
+    );
+  }
+}
+const martha = new StudentCl('Martha Jones', 2012);
+martha.introduce();
+
+// 221. Inheritance Between "Classes": Object.create
 
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
