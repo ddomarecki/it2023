@@ -375,6 +375,9 @@ Account.helper();
 // 225. Chaining Methods
 acc1.deposit(200).deposit(500).withdraw(35).requestLoan(25400).withdraw(4000);
 console.log(acc1.getMovements());
+
+// 226. ES6 Classes Summary
+
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
 ///////////////////////////////////////////////
