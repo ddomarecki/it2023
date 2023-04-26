@@ -403,31 +403,31 @@ console.log(acc1.getMovements());
 
 // 217. Coding Challenge #2
 
-class CarlCl {
-  constructor(make, speed) {
-    this.make = make;
-    this.speed = speed;
-  }
+// class CarlCl {
+//   constructor(make, speed) {
+//     this.make = make;
+//     this.speed = speed;
+//   }
 
-  accelerate() {
-    this.speed = this.speed + 10;
-    console.log(this.speed);
-  }
+//   accelerate() {
+//     this.speed = this.speed + 10;
+//     console.log(this.speed);
+//   }
 
-  brake() {
-    this.speed -= 5;
-    console.log(this.speed);
-  }
-  get speedUS() {
-    return `${this.speed / 1.6} mi/h`;
-  }
+//   brake() {
+//     this.speed -= 5;
+//     console.log(this.speed);
+//   }
+//   get speedUS() {
+//     return `${this.speed / 1.6} mi/h`;
+//   }
 
-  set speedUS(speedInMiH) {
-    this.speed = speedInMiH * 1.6;
-  }
-}
+//   set speedUS(speedInMiH) {
+//     this.speed = speedInMiH * 1.6;
+//   }
+// }
 
-const car1000 = new CarlCl('Ford', 120);
+// const car1000 = new CarlCl('Ford', 120);
 
 // 219. Coding Challenge #3
 
@@ -448,25 +448,77 @@ Car.prototype.brake = function () {
 
 // const car1 = new Car('BMW', 120);
 
-const EV = function (make, speed, charge) {
-  Car.call(this, make, speed);
-  this.charge = charge;
-};
+// const EV = function (make, speed, charge) {
+//   Car.call(this, make, speed);
+//   this.charge = charge;
+// };
 
-// Linking prototypes
-EV.prototype = Object.create(Car.prototype);
+// // Linking prototypes
+// EV.prototype = Object.create(Car.prototype);
 
-EV.prototype.chargeBattery = function (chargeTo) {
-  this.charge = chargeTo;
-};
+// EV.prototype.chargeBattery = function (chargeTo) {
+//   this.charge = chargeTo;
+// };
 
-EV.prototype.accelerate = function () {
-  this.speed += 20;
-  this.charge -= 1;
-  console.log(
-    `Tesla going at ${this.speed}km/h, with a charge of ${this.charge}%`
-  );
-};
+// EV.prototype.accelerate = function () {
+//   this.speed += 20;
+//   this.charge -= 1;
+//   console.log(
+//     `Tesla going at ${this.speed}km/h, with a charge of ${this.charge}%`
+//   );
+// };
 
-const car1 = new EV('Tesla', 120, 23);
-console.log(car1);
+// const car1 = new EV('Tesla', 120, 23);
+// console.log(car1);
+
+// 227. Coding Challenge #4
+
+class CarlCl {
+  constructor(make, speed) {
+    this.make = make;
+    this.speed = speed;
+  }
+
+  accelerate() {
+    this.speed = this.speed + 10;
+    console.log(this.speed);
+  }
+
+  brake() {
+    this.speed -= 5;
+    console.log(this.speed);
+    return this;
+  }
+  get speedUS() {
+    return `${this.speed / 1.6} mi/h`;
+  }
+
+  set speedUS(speedInMiH) {
+    this.speed = speedInMiH * 1.6;
+  }
+}
+
+class EVCl extends CarlCl {
+  #charge;
+  constructor(make, speed, charge) {
+    super(make, speed);
+    this.#charge = charge;
+  }
+  chargeBattery(chargeTo) {
+    this.#charge = chargeTo;
+    return this;
+  }
+  accelerate() {
+    this.speed += 20;
+    this.#charge -= 1;
+    console.log(
+      `Tesla going at ${this.speed}km/h, with a charge of ${this.#charge}%`
+    );
+    return this;
+  }
+}
+
+const car1 = new EVCl('Rivian', 120, 23);
+console.log(
+  car1.accelerate().accelerate().chargeBattery(100).brake().accelerate()
+);
