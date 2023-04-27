@@ -45,7 +45,7 @@ if (navigator.geolocation)
             L.popup({
               maxWidth: 250,
               minWidth: 100,
-              autoclose: false,
+              autoClose: false,
               closeOnClick: false,
               className: 'running-popup',
             })
