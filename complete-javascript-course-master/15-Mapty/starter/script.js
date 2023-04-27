@@ -12,3 +12,17 @@ const inputCadence = document.querySelector('.form__input--cadence');
 const inputElevation = document.querySelector('.form__input--elevation');
 
 // 131. How to Plan a Web Project (theory)
+
+// 232. Using the Geolocation API
+
+navigator.geolocation.getCurrentPosition(
+  function (position) {
+    console.log(position);
+    const { latitude } = position.coords;
+    const { longitude } = position.coords;
+    console.log(`https://www.google.pl/maps/@${latitude},${longitude}`);
+  },
+  function () {
+    alert('Could not get your position');
+  }
+);
