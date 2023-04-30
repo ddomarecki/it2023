@@ -348,3 +348,5 @@ const app = new App();
 // 241. Move to Marker On Click
 
 // 242. Working with localStorage
+
+// 243. Final Considerations (10 additional features ideas: challenges)
