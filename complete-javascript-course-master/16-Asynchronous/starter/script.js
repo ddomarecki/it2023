@@ -41,3 +41,5 @@ const getCountryData = function (country) {
 getCountryData('spain');
 getCountryData('poland');
 getCountryData('germany');
+
+// 249. [OPTIONAL] How the Web Works: Requests and Responses (theory)
