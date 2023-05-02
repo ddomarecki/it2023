@@ -61,48 +61,57 @@ const renderCountry = function (data, className = '') {
   countriesContainer.style.opacity = 1;
 };
 
-const getCountryAndNeighbour = function (country) {
-  // AJAX call country 1
-  const request = new XMLHttpRequest();
-  request.open('GET', `https://restcountries.com/v2/name/${country}`);
-  request.send();
+// const getCountryAndNeighbour = function (country) {
+//   // AJAX call country 1
+//   const request = new XMLHttpRequest();
+//   request.open('GET', `https://restcountries.com/v2/name/${country}`);
+//   request.send();
 
-  request.addEventListener('load', function () {
-    // descructuring under this commend, here we have a array so we need 0 element
-    const [data] = JSON.parse(this.responseText);
+//   request.addEventListener('load', function () {
+//     // descructuring under this commend, here we have a array so we need 0 element
+//     const [data] = JSON.parse(this.responseText);
 
-    // Render country 1
-    renderCountry(data);
-    // console.log(JSON.parse(this.responseText));
+//     // Render country 1
+//     renderCountry(data);
+//     // console.log(JSON.parse(this.responseText));
 
-    // Get neighbour country 2
-    const neighbour = data.borders?.[0];
+//     // Get neighbour country 2
+//     const neighbour = data.borders?.[0];
 
-    // AJAX call country 2
-    const request2 = new XMLHttpRequest();
-    request2.open('GET', `https://restcountries.com/v2/alpha/${neighbour}`);
-    request2.send();
+//     // AJAX call country 2
+//     const request2 = new XMLHttpRequest();
+//     request2.open('GET', `https://restcountries.com/v2/alpha/${neighbour}`);
+//     request2.send();
 
-    request2.addEventListener('load', function () {
-      const data2 = JSON.parse(this.responseText);
+//     request2.addEventListener('load', function () {
+//       const data2 = JSON.parse(this.responseText);
 
-      renderCountry(data2, 'neighbour');
-    });
-  });
-};
+//       renderCountry(data2, 'neighbour');
+//     });
+//   });
+// };
 
-getCountryAndNeighbour('poland');
+// getCountryAndNeighbour('poland');
 
-// Callback hell:
-setTimeout(() => {
-  console.log('1 second passed');
-  setTimeout(() => {
-    console.log('2 seconds passed');
-    setTimeout(() => {
-      console.log('3 seconds passed');
-      setTimeout(() => {
-        console.log('4 seconds passed');
-      }, 1000);
-    }, 3000);
-  }, 1000);
-}, 1000);
+// // Callback hell:
+// setTimeout(() => {
+//   console.log('1 second passed');
+//   setTimeout(() => {
+//     console.log('2 seconds passed');
+//     setTimeout(() => {
+//       console.log('3 seconds passed');
+//       setTimeout(() => {
+//         console.log('4 seconds passed');
+//       }, 1000);
+//     }, 3000);
+//   }, 1000);
+// }, 1000);
+
+// 251. Promises and the Fetch API
+
+// const request = new XMLHttpRequest();
+// request.open('GET', `https://restcountries.com/v2/name/${country}`);
+// request.send();
+
+const request = fetch('https://restcountries.com/v2/name/portugal');
+console.log(request);
