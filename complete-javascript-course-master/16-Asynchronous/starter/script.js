@@ -200,3 +200,27 @@ const getCountryData = function (country) {
 // 254. Handling Rejected Promises
 
 // 255. Throwing Errors Manually
+
+// Coding Challenge #1
+// https://geocode.xyz/[request]&auth=239396541926777502332x12175
+// 'https://geocode.xyz/51.50354,-0.12768?geoit=xml&auth=your_api_key'
+
+const whereAmI = function (lat, lng) {
+  const request = fetch(
+    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
+  )
+    .then(response => {
+      if (!response) throw new Error('Data not found!');
+      return response.json();
+    })
+    .then(data => {
+      console.log(data);
+      console.log(`you are in ${data.city}, ${data.country}`);
+      getCountryData(data.country);
+    })
+    .catch(err => {
+      console.log(`There is an error here! ${err}`);
+    });
+};
+
+const country = whereAmI(52.508, 13.381);
