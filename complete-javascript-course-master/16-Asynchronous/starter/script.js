@@ -210,7 +210,8 @@ const whereAmI = function (lat, lng) {
     `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
   )
     .then(response => {
-      if (!response) throw new Error('Data not found!');
+      if (!response.ok)
+        throw new Error(`Problem with geocinding ${response.status}`);
       return response.json();
     })
     .then(data => {
@@ -219,7 +220,7 @@ const whereAmI = function (lat, lng) {
       getCountryData(data.country);
     })
     .catch(err => {
-      console.log(`There is an error here! ${err}`);
+      console.error(`There is an error here! ${err.message}`);
     });
 };
 
