@@ -203,6 +203,18 @@ const getCountryData = function (country) {
 
 // 257. Asynchronous Behind the Scenes: The Event Loop
 
+// 258. The Event Loop in Practice
+
+console.log('Test start');
+setTimeout(() => console.log('0 sec timer'), 0);
+Promise.resolve('Resolved promise 1').then(res => console.log(res));
+
+Promise.resolve('Resolve promise 2').then(res => {
+  for (let i = 0; i < 10000000; i++) {}
+  console.log(res);
+});
+console.log('Test end');
+
 // Coding Challenge #1
 // https://geocode.xyz/[request]&auth=239396541926777502332x12175
 // 'https://geocode.xyz/51.50354,-0.12768?geoit=xml&auth=your_api_key'
