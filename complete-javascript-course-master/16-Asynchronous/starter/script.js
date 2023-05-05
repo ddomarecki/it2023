@@ -17,7 +17,7 @@ const renderCountry = function (data, className = '') {
     </div>
   </article>`;
   countriesContainer.insertAdjacentHTML('beforeend', html);
-  // countriesContainer.style.opacity = 1;
+  countriesContainer.style.opacity = 1;
 };
 
 const renderError = function (msg) {
@@ -168,9 +168,9 @@ const getJSON = function (url, errorMsg = 'Something went wrong') {
 //     });
 // };
 
-btn.addEventListener('click', function () {
-  getCountryData('portugal');
-});
+// btn.addEventListener('click', function () {
+//   getCountryData('portugal');
+// });
 
 const getCountryData = function (country) {
   // country 1
@@ -268,16 +268,28 @@ wait(1)
 Promise.resolve('abc').then(x => console.log(x));
 Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
-//////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////
-// Coding Challenge #1
-// https://geocode.xyz/[request]&auth=239396541926777502332x12175
-// 'https://geocode.xyz/51.50354,-0.12768?geoit=xml&auth=your_api_key'
+// 260. Promisifying the Geolocation API
 
-const whereAmI = function (lat, lng) {
-  const request = fetch(
-    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
-  )
+const getPosition = function () {
+  return new Promise(function (resolve, reject) {
+    // navigator.geolocation.getCurrentPosition(
+    //   position => resolve(position),
+    //   err => reject(err)
+    // );
+    navigator.geolocation.getCurrentPosition(resolve, reject);
+  });
+};
+
+// getPosition().then(pos => console.log(pos));
+
+const whereAmI = function () {
+  getPosition()
+    .then(pos => {
+      const { latitude: lat, longitude: lng } = pos.coords;
+      return fetch(
+        `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
+      );
+    })
     .then(response => {
       if (!response.ok)
         throw new Error(`Problem with geocinding ${response.status}`);
@@ -286,11 +298,46 @@ const whereAmI = function (lat, lng) {
     .then(data => {
       console.log(data);
       console.log(`you are in ${data.city}, ${data.country}`);
-      getCountryData(data.country);
+      // getCountryData(data.country);
+      return fetch(`https://restcountries.com/v2/name/${data.country}`);
+    })
+    .then(res => {
+      if (!res.ok) throw new Error('Country not found');
+      return res.json();
+    })
+    .then(data => {
+      renderCountry(data[0]);
     })
     .catch(err => {
       console.error(`There is an error here! ${err.message}`);
     });
 };
 
-const country = whereAmI(52.508, 13.381);
+btn.addEventListener('click', whereAmI);
+
+//////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////
+// Coding Challenge #1
+// https://geocode.xyz/[request]&auth=239396541926777502332x12175
+// 'https://geocode.xyz/51.50354,-0.12768?geoit=xml&auth=your_api_key'
+
+// const whereAmI = function (lat, lng) {
+//   const request = fetch(
+//     `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
+//   )
+//     .then(response => {
+//       if (!response.ok)
+//         throw new Error(`Problem with geocinding ${response.status}`);
+//       return response.json();
+//     })
+//     .then(data => {
+//       console.log(data);
+//       console.log(`you are in ${data.city}, ${data.country}`);
+//       getCountryData(data.country);
+//     })
+//     .catch(err => {
+//       console.error(`There is an error here! ${err.message}`);
+//     });
+// };
+
+// const country = whereAmI(52.508, 13.381);
