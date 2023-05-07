@@ -271,8 +271,8 @@ const getCountryData = function (country) {
 //   }, 1000);
 // }, 1000);
 
-Promise.resolve('abc').then(x => console.log(x));
-Promise.reject(new Error('Problem!')).catch(x => console.error(x));
+// Promise.resolve('abc').then(x => console.log(x));
+// Promise.reject(new Error('Problem!')).catch(x => console.error(x));
 
 // 260. Promisifying the Geolocation API
 
@@ -345,20 +345,42 @@ const whereAmI2 = async function () {
 
     const data = await res.json();
     renderCountry(data[0]);
+    return `You are in ${dataGeo.city}, ${dataGeo.country}`;
   } catch (err) {
     console.error(err);
     renderError(`Something went wrong ${err.message}`);
+    // Reject promise returned from async function
+    throw err;
   }
 };
-whereAmI2();
+// const city = whereAmI2();
+// console.log(city);
 
-try {
-  let y = 1;
-  const x = 2;
-  x = 3;
-} catch (err) {
-  alert(err.message);
-}
+// whereAmI2()
+//   .then(city => console.log(`2: ${city}`))
+//   .catch(err => console.error(`2 ${err.message}`))
+//   .finally(() => console.log('3'));
+
+(async function () {
+  try {
+    const city = await whereAmI2();
+    console.log(`2: ${city}`);
+  } catch (err) {
+    console.log('2');
+  }
+  console.log('3');
+})();
+
+// try {
+//   let y = 1;
+//   const x = 2;
+//   x = 3;
+// } catch (err) {
+//   alert(err.message);
+// }
+
+// 264. Returning Values from Async Functions
+
 //////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 // Coding Challenge #1
