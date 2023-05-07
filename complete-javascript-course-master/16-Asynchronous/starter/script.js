@@ -322,28 +322,43 @@ const whereAmI = function () {
 btn.addEventListener('click', whereAmI);
 
 // 262. Consuming Promises with Async/Await
+// 263. Error Handling With try...catch
 
 const whereAmI2 = async function () {
-  // geolocation
-  const pos = await getPosition();
-  const { latitude: lat, longitude: lng } = pos.coords;
+  try {
+    // geolocation
+    const pos = await getPosition();
+    const { latitude: lat, longitude: lng } = pos.coords;
 
-  // reverse geocoding
-  const resGeo = await fetch(
-    `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
-  );
-  const dataGeo = await resGeo.json();
+    // reverse geocoding
+    const resGeo = await fetch(
+      `https://geocode.xyz/${lat},${lng}?geoit=json&auth=239396541926777502332x12175`
+    );
+    if (!resGeo.ok) throw new Error('Problem getting location data');
+    const dataGeo = await resGeo.json();
 
-  // country data
-  const res = await fetch(
-    `https://restcountries.com/v2/name/${dataGeo.country}`
-  );
-  const data = await res.json();
-  renderCountry(data[0]);
+    // country data
+    const res = await fetch(
+      `https://restcountries.com/v2/name/${dataGeo.country}`
+    );
+    if (!res.ok) throw new Error('Problem getting location data');
+
+    const data = await res.json();
+    renderCountry(data[0]);
+  } catch (err) {
+    console.error(err);
+    renderError(`Something went wrong ${err.message}`);
+  }
 };
-
 whereAmI2();
 
+try {
+  let y = 1;
+  const x = 2;
+  x = 3;
+} catch (err) {
+  alert(err.message);
+}
 //////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 // Coding Challenge #1
