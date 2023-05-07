@@ -402,6 +402,52 @@ const get3Countries = async function (c1, c2, c3) {
 };
 get3Countries('portugal', 'canada', 'poland');
 
+// 266. Other Promise Combinators: race, allSettled and any
+
+// Promise.race
+(async function () {
+  const res = await Promise.race([
+    getJSON(`https://restcountries.com/v2/name/italy`),
+    getJSON(`https://restcountries.com/v2/name/germany`),
+    getJSON(`https://restcountries.com/v2/name/france`),
+  ]);
+  console.log(res[0]);
+})();
+
+const timeout = function (s) {
+  return new Promise(function (_, reject) {
+    setTimeout(function () {
+      reject(new Error('request took too long!'));
+    }, s * 1000);
+  });
+};
+
+Promise.race([getJSON(`https://restcountries.com/v2/name/belarus`), timeout(5)])
+  .then(res => console.log(res[0]))
+  .catch(err => console.error(err));
+
+// Promise.allSettled
+Promise.allSettled([
+  Promise.resolve('success'),
+  Promise.reject('error'),
+  Promise.resolve('success'),
+]).then(res => console.log(res));
+
+//
+// Promise.all
+Promise.all([
+  Promise.resolve('success'),
+  Promise.reject('error'),
+  Promise.resolve('success'),
+]).then(res => console.log(res));
+
+// Promise.any
+Promise.any([
+  Promise.resolve('successsuccesssuccess'),
+  Promise.reject('errorerrorerrorerror'),
+  Promise.resolve('successssssssssssss'),
+]).then(res => console.log(res));
+
 //////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////
 // Coding Challenge #1
