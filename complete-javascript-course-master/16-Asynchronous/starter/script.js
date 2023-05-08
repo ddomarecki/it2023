@@ -501,7 +501,7 @@ Promise.any([
 //   });
 // };
 
-// let currentImg;
+let currentImg;
 
 // createImage('img/img-1.jpg')
 //   .then(img => {
@@ -528,3 +528,60 @@ Promise.any([
 //     currentImg.style.display = 'none';
 //   })
 //   .catch(err => console.error(err));
+
+// 267. Coding Challenge #3
+
+const wait = function (seconds) {
+  return new Promise(function (resolve) {
+    setTimeout(resolve, seconds * 1000);
+  });
+};
+
+let imgContainer = document.querySelector('.images');
+
+const createImage = function (imgPath) {
+  return new Promise(function (resolve, reject) {
+    const img = document.createElement('img');
+    img.src = imgPath;
+
+    img.addEventListener('load', function () {
+      imgContainer.append(img);
+      resolve(img);
+    });
+
+    img.addEventListener('error', function () {
+      reject(new Error('image not found'));
+    });
+  });
+};
+
+(async function () {
+  try {
+    let img = await createImage('img/img-1.jpg');
+    currentImg = img;
+    await wait(2);
+    currentImg.style.display = 'none';
+    img = await createImage('img/img-2.jpg');
+    currentImg = img;
+    await wait(2);
+    currentImg.style.display = 'none';
+    img = createImage('img/img-3.jpg');
+    currentImg = img;
+    await wait(2);
+    currentImg.style.display = 'none';
+  } catch (err) {
+    console.error(err.message);
+  }
+  console.log('finally');
+})();
+
+let imgArr = ['img/img-1.jpg', 'img/img-2.jpg', 'img/img3.jpg'];
+let imgs = [];
+let data;
+
+const loadAll = async function (arr) {
+  let imgs = [];
+  data = await Promise.all([arr.map(img => imgs.push(img))]);
+};
+
+loadAll(imgArr);
