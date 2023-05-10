@@ -1,0 +1,271 @@
+body {
+	margin: 0px;
+	margin-top: 10px;
+	padding: 0px;
+	background-image: url('bg.jpg');
+	background-attachment:fixed;
+        /*tu był bg.gif i to robi szare tło */
+	/*background-repeat: repeat-x; */
+	margin-bottom: 10px;
+	color: #222;
+	font-family: roboto, arial, sans-serif;
+}
+
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+#logo {
+	padding: 0px;
+	width: inherit;
+	
+}
+
+#top {
+	width: 875px;
+	height: 158px;
+	background-color: white;
+
+}
+
+#zatop {
+
+	width: 875px;
+        /* background-color: #F76300; */
+        background-image: url(zatop_tlo.gif) ;
+	height: 55px;
+	text-align: right; 
+       
+
+	position: relative;
+	top: 22px;
+	
+	padding-top: 7px;
+	text-decoration: none;
+	font-variant: small-caps;
+
+	
+}
+
+#zatop a:link {
+color: black;
+top: 11px;
+font-size: large;
+font-weight: bold;
+
+
+}
+
+#zatop a:visited {
+
+color: black;
+
+}
+
+#zatop a:hover {
+
+color: white;
+
+}
+
+
+#wrapper {
+	margin: 0px auto;
+	width: 875px;
+	border-style: solid;
+	border-top: none;
+	border-color: #C3C3C3;
+	border-width: 0 1px;
+	padding: 10px 20px;
+	background-color: #FFF; 
+	border-bottom: 1px solid #C3C3C3;
+
+}
+
+#topkrawedz { 
+	border-style: none;
+	border-width: 0px;
+	border-color: #FFF;
+
+}
+
+
+#lewa {
+	float: left;
+	width: 35%;
+	height: auto;
+	background-color: white;
+	margin-top: 46px; 
+	padding: 0;
+	margin-right: 0;
+
+	
+}
+
+#nawigacja {
+
+box-sizing: border-box;
+list-style: none;
+border-top: 2px solid #AFAFAF; 
+font-size: medium;
+float: left;
+margin: 0;
+padding: 0;
+margin-bottom: 20px;
+margin-top: 20px;
+
+
+
+}
+
+#nawigacja a {
+
+font-size: 1.0em;
+text-decoration: none;
+font-weight: normal;
+
+}
+
+#nawigacja a:link {
+
+color: #1864BB;
+
+}
+
+#nawigacja a:visited {
+
+color: #164CAF;
+
+}
+
+#nawigacja a:hover {
+
+color: #A3D9F0;
+
+
+}
+
+#nawigacja a:active {
+
+color: #D9DF29;
+
+}
+
+#nawigacja a:focus {
+
+color: #DF6B0D;
+
+}
+
+#nawigacja li {
+
+padding: 10px 0 10px 45px;
+font-family: roboto, arial, sans-serif;
+
+border-bottom: 1px solid #CFCFCF; width: 210px;
+background: transparent url(ornament.jpg) 0 50% no-repeat; 
+
+}
+
+#nawigacja li.current {
+
+font-weight: bold;
+font-style: italic;
+font-size: x-large;
+color: #164CAF;
+background: 0;
+padding: 10px 0 10px 0px;
+border-bottom: 0px solid #CFCFCF; width: 210px;
+
+}
+
+#srodek {
+	float: right;
+	display: block;
+	width: 65%;
+	height: auto;
+	background-color: white;
+	margin-top: 5px;
+	padding: 0;
+	margin-left: 0;
+
+}
+
+#srodek p.wierszyk {
+font-weight: bold;
+float: right;
+position: relative;
+right: 100px;
+top: 23px;
+}
+#malarstwo {
+
+position: relative;
+margin-top: 50px;
+float: right;
+
+
+}
+
+
+
+
+#stopka {
+	clear: both;
+	width: 100%;
+	height: 55px;
+	background-color: #F7B584;
+	padding-top: 7px;
+	font-size: small;
+	text-align: center;
+}
+
+
+.linkk a:hover {
+color:blue;
+text-decoration:none;
+}
+
+a:link {
+	
+	color: white;
+	text-decoration: none;
+
+}
+
+#nawigacja a:visited {
+color:
+text-decoration:none;
+}
+
+a:hover {
+
+color:#ACBED7;
+text-decoration: none;
+
+}
+
+a:active {
+color:
+text-decoration:none;
+}
+
+a:focus {
+color:
+text-decoration:none;
+}
+
+#linktop {
+	
+	position: relative; 
+	font-size: 17px;
+	top: 3px;
+	right: 13px;
+	
+	
+}
+
+
+
