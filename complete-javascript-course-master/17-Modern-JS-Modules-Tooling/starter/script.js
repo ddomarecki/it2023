@@ -82,3 +82,24 @@ console.log(lastPost2);
 
 // // import
 // const {addTocart} = require('./shoppingCart.js')
+
+// 276. A Brief Introduction to the Command Line
+
+// 277. Introduction to NPM
+
+import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+const state = {
+  cart: [
+    { product: 'bread', quantity: 5 },
+    { product: pizza, quantity: 5 },
+  ],
+  user: { loggedIn: true },
+};
+
+const stateClone = Object.assign({}, state); // old way of cloning Objects
+const stateDeepClone = cloneDeep(state);
+
+state.user.loggedIn = false;
+console.logs(stateClone);
+console.log(stateDeepClone);
