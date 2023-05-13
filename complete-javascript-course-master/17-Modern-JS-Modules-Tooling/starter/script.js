@@ -36,10 +36,10 @@ const lastPost = getLastPost();
 console.log(lastPost); // promise pending result
 
 // Not very clean
-// lastPost.then(last => console.log(last));
+lastPost.then(last => console.log(last));
 
-const lastPost2 = await getLastPost();
-console.log(lastPost2);
+// const lastPost2 = await getLastPost();
+// console.log(lastPost2);
 
 // module pattern
 
@@ -87,12 +87,14 @@ console.log(lastPost2);
 
 // 277. Introduction to NPM
 
-import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+// import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
+
+import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
     { product: 'bread', quantity: 5 },
-    { product: pizza, quantity: 5 },
+    { product: 'pizza', quantity: 5 },
   ],
   user: { loggedIn: true },
 };
@@ -101,5 +103,11 @@ const stateClone = Object.assign({}, state); // old way of cloning Objects
 const stateDeepClone = cloneDeep(state);
 
 state.user.loggedIn = false;
-console.logs(stateClone);
+console.log(stateClone);
 console.log(stateDeepClone);
+
+// 278. Bundling With Parcel and NPM Scripts
+
+if (module.hot) {
+  module.hot.accept();
+}
