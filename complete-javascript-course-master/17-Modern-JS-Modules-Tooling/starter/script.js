@@ -89,7 +89,7 @@ lastPost.then(last => console.log(last));
 
 // import cloneDeep from './node_modules/lodash-es/cloneDeep.js';
 
-import cloneDeep from 'lodash-es';
+// import cloneDeep from 'lodash-es';
 
 const state = {
   cart: [
@@ -111,3 +111,22 @@ console.log(stateDeepClone);
 if (module.hot) {
   module.hot.accept();
 }
+
+class Person {
+  greeting = 'hey';
+  constructor(name) {
+    this.name = name;
+    console.log(`${this.greeting}, ${this.name}`);
+  }
+}
+
+const jonas = new Person('Jonas');
+
+console.log(cart.find(el => el.quantity >= 2));
+
+import 'core-js/stable';
+// import 'core-js/stable/array/find';
+// import 'core-js/stable/promise'
+
+// Polifiliing async functions
+import 'regenerator-runtime/runtime';
