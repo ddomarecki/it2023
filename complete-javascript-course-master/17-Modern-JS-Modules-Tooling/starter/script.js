@@ -130,3 +130,5 @@ import 'core-js/stable';
 
 // Polifiliing async functions
 import 'regenerator-runtime/runtime';
+
+// 280. Review: Writing Clean and Modern JavaScript - theory
