@@ -51,3 +51,5 @@ const logBigExpenses = function (bigLimit) {
 
 console.log(budget);
 logBigExpenses(500);
+
+// 282. Declarative and Functional JavaScript Principles - therory / imperative vs declarative
