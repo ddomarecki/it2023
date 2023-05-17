@@ -12,4 +12,4 @@ const timeout = function (s) {
 
 ///////////////////////////////////////
 
-// 286. Project Overview and Planning (I) - theory
+// new version v 2.2 updated
