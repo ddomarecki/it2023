@@ -13,3 +13,5 @@ const timeout = function (s) {
 ///////////////////////////////////////
 
 // new version v 2.2 updated
+
+// all checked 18.05.2023
