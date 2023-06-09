@@ -109,23 +109,32 @@ const controlBookmarks = function () {
 
 const controlAddRecipe = async function (newRecipe) {
   try {
-    // show loading spinner
+    // Show loading spinner
     addRecipeView.renderSpinner();
 
+    // Upload the new recipe data
     await model.uploadRecipe(newRecipe);
     console.log(model.state.recipe);
 
     // Render recipe
     recipeView.render(model.state.recipe);
 
-    // succes message
+    // Success message
     addRecipeView.renderMessage();
-    // Close form windows
+
+    // Render bookmark view
+    bookmarksView.render(model.state.bookmarks);
+
+    // Change ID in URL
+    window.history.pushState(null, '', `#${model.state.recipe.id}`);
+
+    // Close form window
     setTimeout(function () {
       addRecipeView.toggleWindow();
+      location.reload();
     }, MODAL_CLOSE_SEC * 1000);
   } catch (err) {
-    console.error(err);
+    console.error('💥', err);
     addRecipeView.renderError(err.message);
   }
 };
